@@ -14,10 +14,10 @@ def show_params():
     return "ExcelFile;CsvFile;Sheet\nExcel file.;The destination csv file;Defines which sheet you want."
 
 
-def csv_from_excel(excel_file, csv_file, sheetName):
+def csv_from_excel(excel_file, csv_file, sheet_name):
 
     wb = xlrd.open_workbook(excel_file)
-    sh = wb.sheet_by_name(sheetName)
+    sh = wb.sheet_by_name(sheet_name)
     your_csv_file = open(csv_file, 'w', newline='')
     wr = csv.writer(your_csv_file, quoting=csv.QUOTE_ALL)
 
