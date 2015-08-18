@@ -1,12 +1,20 @@
 __author__ = 'Lieven'
 
 import sys
-import urllib
+import csv
 
-if len(sys.argv) != 3:
-    print("Usage: CurlRequest <URL> <outputfile.csv>")
+import sourcemodule.CurlRequestClass
+
+if len(sys.argv) != 2 or sys.argv[1] == "--inputparameters":
+    print(sourcemodule.CurlRequestClass.show_params())
     sys.exit(2)
+if sys.argv[1] == "--validate":
+    sourcemodule.CurlRequestClass.validate(sys.argv[2])
 
-url = sys.argv[1]
+input_file = sys.argv[1]
 
-testfile = urllib.URLopener()
+
+with open(input_file) as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        sourcemodule.CurlRequestClass.execute(row)

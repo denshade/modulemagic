@@ -1,0 +1,25 @@
+A module is an executable that takes parameters. It always takes a matrix csv. It is compatible with the result of the --inputparameters call.
+
+It MUST also take the parameters --inputparameters. This will produce a csv with headers and the second row a
+It MUST also take the parameters --validate <input_file> will validate a csv input. This allows for thorough validation.
+
+A matrix is a csv separated by ; and has a required header with the name of the parameters accepted by a module.
+
+A recipe is an inputmatrix with modules and the corresponding inputmatrix file.
+
+A module can be one of the following types:
+- conversion
+- visualization(UI)
+- source
+- destination
+- trigger
+
+There are formats that are accepted as intermediary formats. Modules should not convert from one non intermediary format
+to another. Eg. amr -> dss.
+
+A reliable module has full coverage tests.
+
+Todo:
+CurlRequest
+
+A list of reliable modules:
