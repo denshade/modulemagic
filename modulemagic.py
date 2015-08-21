@@ -10,10 +10,11 @@ if len(sys.argv) != 2:
       """)
       sys.exit(2)
 inputFile = sys.argv[1]
+working_dir = os.path.dirname(os.path.realpath(__file__))
 with open(inputFile, 'r') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         print("running " + row['module'] + " " + row['file'] + "\n")
-        os.system(row['module'] + " \"" + row['file']+"\"")
+        os.system(working_dir+"\\"+row['module'] + " \"" + row['file']+"\"")
 
 

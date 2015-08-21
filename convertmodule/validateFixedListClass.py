@@ -18,12 +18,12 @@ def execute(row):
 
     with open(file_to_process) as csvfile:
         reader = csv.DictReader(csvfile)
-        rowNr = 1;
-        errorMatrix.write("row number;offending column;offending value\n")
+        rowNr = 1
+        errorMatrix.write("row number,offending column,offending value\n")
         for row in reader:
             for key, value in row.items():
                 if key in allowedValues and not value.strip() in allowedValues[key] and not value == '':
-                    errorMatrix.write(str(rowNr) +";" + key + ";" + value +"\n")
+                    errorMatrix.write(str(rowNr) + "," + key + "," + value + "\n")
             rowNr += 1
 
 
