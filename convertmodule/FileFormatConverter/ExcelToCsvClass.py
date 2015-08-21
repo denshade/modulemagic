@@ -18,7 +18,7 @@ def csv_from_excel(excel_file, csv_file, sheet_name):
 
     wb = xlrd.open_workbook(excel_file)
     sh = wb.sheet_by_name(sheet_name)
-    your_csv_file = open(csv_file, 'w', newline='')
+    your_csv_file = open(csv_file, 'w', newline='', encoding="utf-8")
     wr = csv.writer(your_csv_file, quoting=csv.QUOTE_ALL)
 
     for rownum in list(range((sh.nrows))):
