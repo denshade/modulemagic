@@ -4,7 +4,7 @@ __author__ = 'lveeckha'
 def execute(row):
     SourceFile = row["SourceFile"]
     RowNumbers = row["RowNumbers"]
-    Outputfile = row["Outputfile"]
+    Outputfile = row["OutputFile"]
     write_file = open(Outputfile, 'w')
     read_file = open(SourceFile, 'r')
     counter = 1
@@ -19,4 +19,4 @@ def execute(row):
 
 
 def show_params():
-    return "SourceFile;RowNumbers;Outputfile\nThe text file to slice data out of.;semicolon separated lines to slice out.;The file to write to."
+    return "SourceFile;RowNumbers;OutputFile\nThe text file to slice data out of.;semicolon separated lines to slice out.;The file to write to."

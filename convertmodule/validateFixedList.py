@@ -5,6 +5,7 @@ import csv
 import convertmodule.validateFixedListClass
 
 if len(sys.argv) != 2 or sys.argv[1] == "--inputparameters":
+    print(sys.argv)
     print(convertmodule.validateFixedListClass.show_params())
     sys.exit(2)
 if sys.argv[1] == "--validate":
