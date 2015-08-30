@@ -5,13 +5,11 @@ __author__ = 'lveeckha'
 import sys
 import csv
 
-import convertmodule.FileFormatConverter.ExcelToCsvClass
-
 if len(sys.argv) != 2 or sys.argv[1] == "--inputparameters":
-    print("Query,ResultFile")
+    print("Query,ResultFile\nThe query sqlite3.,The result file.")
     sys.exit(2)
 if sys.argv[1] == "--validate":
-    convertmodule.FileFormatConverter.ExcelToCsvClass.validate(sys.argv[2])
+    pass
 
 def execute(row):
     Query = row['Query']
