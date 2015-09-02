@@ -14,7 +14,14 @@ working_dir = os.path.dirname(os.path.realpath(__file__))
 with open(inputFile, 'r') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
-        print("running " + row['module'] + " " + row['file'] + "\n")
-        os.system(working_dir+"\\"+row['module'] + " \"" + row['file']+"\"")
+        module_path = row['module']
+        if not os.path.isfile(module_path):
+            module_path = working_dir + "\\" + module_path
 
+        recipe_path = row['file']
+        if not os.path.isfile(recipe_path):
+            recipe_path = working_dir + "\\" + recipe_path
 
+        command = module_path + " \"" + recipe_path + "\""
+        print("running " + command)
+        os.system(command)

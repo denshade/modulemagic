@@ -1,0 +1,3 @@
+module,file
+sourcemodule\CurlRequest,openmeteologin.matrix.csv
+convertmodule\OpenWeatherapiMatrix,openmeteoconvertmatrix.csv
