@@ -22,6 +22,9 @@ with open(inputFile, 'r') as csvfile:
         if not os.path.isfile(recipe_path):
             recipe_path = working_dir + "\\" + recipe_path
 
-        command = module_path + " \"" + recipe_path + "\""
+        if not os.path.isfile(recipe_path):
+            print("file not found " + row['file'])
+            exit(1)
+        command = "c:\Python34\python.exe " + module_path + " \"" + recipe_path + "\""
         print("running " + command)
         os.system(command)
