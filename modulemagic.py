@@ -1,8 +1,7 @@
-__author__ = 'Lieven'
-
 import sys
 import csv
 import os
+import subprocess
 
 if len(sys.argv) != 2:
       print("""\
@@ -25,6 +24,8 @@ with open(inputFile, 'r') as csvfile:
         if not os.path.isfile(recipe_path):
             print("file not found " + row['file'])
             exit(1)
-        command = "c:\Python34\python.exe " + module_path + " \"" + recipe_path + "\""
-        print("running " + command)
-        os.system(command)
+        command = [sys.executable, module_path, recipe_path]
+        print("running " + ' '.join(command))
+        if subprocess.call(command) != 0:
+            print("Running command failed " + ' '.join(command))
+            break

@@ -20,7 +20,10 @@ def execute(row):
     f.write("time,temperature,isRain\n")
     for weather in map['list']:
         tempInCelc = weather['main']['temp'] - 273.15
-        rain = len(weather['rain'])
+        if 'rain' in weather:
+            rain = len(weather['rain'])
+        else:
+            rain = 0
         line = time.strftime('%d/%m/%Y %H:%M:%S', time.gmtime(weather['dt'])) + "," + str(tempInCelc) + ',' + str(
             rain) + "\n"
         f.write(line)
