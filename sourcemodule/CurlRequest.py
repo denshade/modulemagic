@@ -22,6 +22,7 @@ def validate(file_to_validate):
     pass
 
 if len(sys.argv) != 2 or sys.argv[1] == "--inputparameters":
+    print("Not enough parameters " + ''.join(sys.argv))
     print(show_params())
     sys.exit(2)
 if sys.argv[1] == "--validate":
