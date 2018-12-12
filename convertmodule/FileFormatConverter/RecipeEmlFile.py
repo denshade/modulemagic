@@ -8,12 +8,8 @@ __author__ = 'lveeckha'
 def execute(row):
         recipients = row['ToEmails']
         subject = row['Subject']
-
-        ddtstart = datetime.datetime.now()
-        dtoff = datetime.timedelta(days=1)
-        duration = datetime.timedelta(weeks=1)
-        ddtstart = ddtstart + dtoff
-        dtend = ddtstart + duration
+        ddtstart = datetime.datetime.strptime(row['StartTime'], "%Y-%m-%d")
+        dtend = datetime.datetime.strptime(row['EndTime'], "%Y-%m-%d")
         dtstamp = datetime.datetime.now().strftime("%Y%m%dT%H%M%SZ")
         dtstart = ddtstart.strftime("%Y%m%dT%H%M%SZ")
         dtend = dtend.strftime("%Y%m%dT%H%M%SZ")
