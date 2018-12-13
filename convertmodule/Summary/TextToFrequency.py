@@ -22,7 +22,14 @@ def Excluded(word):
                      "i2b2","custodix","datatekortkomingen","validatie", "databron","recruitment","feasibility", "probleem", "data", "beschikbaar",
                      "waarden", "getallen", "figuur", "waarde", "transformer", "container", "coderen", "getal", "hand", "tunnel", "n", "gebruiken", "bits", "gebruikt", "grootte", "slaan", "xml",
                      "codering", "opgeslagen", "tunnelen", "compressie", "aantal", "kiezen", "basis", "bsdl",
-                     "optimale", "gebruik", "containers", "transformers", "vorige", "symbool", "parameters", "opslaan"]
+                     "optimale", "gebruik", "containers", "transformers", "vorige", "symbool", "parameters", "opslaan",
+                     "god","aarde", "water", "licht", "zag", "avond", "gebeurde", "moeten","schiep", "noemde", "levende", "vogels",
+                     "hemel", "gewelf", "planten", "allerlei", "maakte", "dag", "wezens", "dieren", "duisternis", "scheidde",
+                     "jong", "groen", "zaadvormende", "bomen", "vruchten", "zaad", "hemelgewelf", "scheiden", "nacht",
+                     "soorten", "zegende", "vruchtbaar", "talrijk", "wild", "evenbeeld", "vissen", "zei", "woest","lag","gods","geest","zweefde","eerste","midden","elkaar","tweede","plaats",
+                     "droog","land","droge","samengestroomde","dragen","bracht","droegen","derde","lichten",
+                     "seizoenen", "aangeven", "dagen", "dienen", "lampen", "twee", "grootste", "kleinere", "plaatste",
+                     "heere", "gewon", "zonen", "zeide", "noach", "wateren", "naam", "koning","abram"]
     return word in excludedWords
 
 

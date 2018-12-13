@@ -1,0 +1,538 @@
+Beste Mr. Bamelis,
+Omtrent de bestelling van Slims (Genohm) kregen we onderstaande vraag door.
+Ik vernam dat de bestelbon reeds werd opgemaakt. Klopt dit? Zoniet, kan ik ergens van dienst zijn om het proces te bespoedigen?
+
+Alvast bedankt,
+Lieven
+
+Geen probleem, er is geen haast bij.
+
+Mvg,
+Lieven
+
+Hallo Catherine,
+We (Lieselot en ikzelf) zaten vandaag kort even samen met prof. Sys van de Orthopedie en traumatologie.
+Zij zijn op zoek naar iemand die het register kan helpen ontwikkelen.
+We zaten hiervoor vandaag even samen. Ze lichtten ons hun ‘DB bot en wekedelentumoren’ toe en wat hun wensen zijn.
+
+We schatten hier ongeveer 16 uur werk aan. Lieselot zou hierin het voortouw nemen en de ontwikkelingen doen in januari.
+
+We stelden een Dienstsamenwerkingsovereenkomst (DSO) op met onze standaard modaliteiten. Doorgaans wordt dit ondertekend door de twee partijen.
+
+Ik voegde de DSO toe als bijlage. Kan u zich hierin vinden? Zoja, stuur ik dit ook door naar prof. dr. Sys. Als zij geen bemerkingen heeft print ik het af en kunnen we met de handtekeningsronde finalizeren.
+
+Met vriendelijke groeten,
+Lieven
+
+Maakt me niet zozeer uit. Wat uw voorkeur kent.  Anders kom ik even langs. Kan u nog even de route doorsturen?
+
+Mvg,
+Lieven
+
+Beste,
+Ik vrees enkel toelichting te kunnen geven over het digitaal tekenen.
+
+Tenslotte krijgen we de vraag om ‘ondertekende’ rapporten te bezorgen. We werken zoveel als mogelijk elektronisch en de initialen van de technicus die het onderhoud uitvoert staan automatisch op het rapport. In dit digitaal tijdperk kan ik mijn medewerkers niet motiveren om rapporten te printen, ondertekenen, scannen en terug door te sturen. Rapporten van onderhoud door externe technici zijn soms geparafeerd, maar ook minder en minder gezien volledig digitaal.
+
+Mogelijks is het aangewezen om hier elektronisch te tekenen?
+Behoudens mijn vergissing kregen digitale handtekeningen volgens eIDAS-verordening 910/2014/EG dezelfde status als een handgeschreven handtekening.
+U kan digitaal handtekenen aan de hand van de eID dewelke ingebouwd zit in de meeste laptops op het UZG. Hoe u dit kan doen vindt u hier: https://eid.belgium.be/nl/digitale-handtekeningen
+
+Ik ben echter helemaal geen jurist en zou dit enkel doen mits goedkeuring van de Juridische Dienst.
+
+Met vriendelijke groeten,
+
+
+Hallo Stijn,
+Hallo Hannes,
+
+Zowel op de productie omgeving als op de testomgeving moeten we wel heel lang wachten als we samples opzoeken met study specific patient id ‘dmac2012’.
+We meten hier tot 3 minuten wachttijd.
+Kan u dit even inkijken?
+
+Alvast bedankt,
+Lieven
+
+Hallo allen,
+Ik heb het analyse document aangepast.
+
+Nieuwe structuur hiërarchie stalen SLims
+
+De huidige structuur kent enkele vervelende tekortkomingen.
+
+Patient (adremanummer - study specific id) - Group = Biobank patients
+Sample (adremanummer - study specific id) - Group = Group 1
+Sample (adremanummer - study specific id) - Group = Group 2
+
+In de huidige oplossing overschrijven we telkens de study specific id op patientniveau. Dit komt omdat 1 patiënt in SLims 1 studyspecific id kan bevatten.
+De vraag die we wensen te beantwoorden is: wat is de beste oplossing rekening houdende met onderstaande processen.
+
+We dienen de volgende relevante processen in acht te nemen bij de voorgestelde oplossingen:
+Registratie van de stalen via de reception flow.
+Later aanvullen van het study specific id.
+Het inladen en visualiseren van biopsy data.
+Het kunnen opzoeken van stalen op basis van gegevens in de biopsy.
+Het kunnen zien van de gegevens over de patient door de gebruikersgroep.
+Hierarchisch weergeven van de studies waarin een patient deelnam per groep.
+
+Patienten dupliceren per provider
+Een optie is om patiënten te dupliceren per provider.
+
+Patient (adremanummer 1 - study specific id 87) - Provider 1
+Sample (adremanummer - study specific id) - Group = Group 1
+Patient (adremanummer 2 - study specific id 87) - Provider 2
+Sample (adremanummer - study specific id) - Group = Group 2
+Patient (adremanummer 1 - study specific id 914) - Provider 2
+Sample (adremanummer - study specific id) - Group = Group 2
+
+Er wordt een patiënt aangemaakt per provider per study specific id.
+Het adremanummer is optioneel. Het adrema# is niet verplicht en wordt als extra veld gezien.
+
+Dit impliceert dat voor elke flow “study specific patient id” verplicht is. Voor oude stalen zonder study specific patient id zal de “patiënt barcode” gebruikt worden.
+
+Als een patiënt wordt ingegeven met een bestaand study specific patient id en het adremanummer wijkt af, dan wordt een foutmelding getoond. Tenzij het adremanummer weggelaten wordt. Dan blijft het adremanummer onaangeroerd.
+
+U kan het ook hier vinden:
+https://docs.google.com/document/d/16fjsXwqWrQKpi39jULphCJlMtIUItRS_6lZAAaVX26U/edit?usp=sharing
+
+Mvg,
+Lieven
+
+
+Hallo Kristof,
+
+Dit werd aangepast.
+
+Mvg,
+Lieven
+
+Hallo Kristof,
+De ETL zou opnieuw netjes moeten draaien.
+
+Kan jij even inkijken of alles nog voldoet?
+
+Mvg,
+Lieven
+
+
+Beste Mr. Bamelis,
+Omtrent de bestelling van Slims (Genohm) kregen we onderstaande vraag door.
+Ik vernam dat de bestelbon reeds werd opgemaakt. Klopt dit? Zoniet, kan ik ergens van dienst zijn om het proces te bespoedigen?
+
+Alvast bedankt,
+Lieven
+
+Hallo Charlotte,
+Hiermede een pdf ‘how to add a new patient in my study’ en nog een video ook:
+
+Ah zo.
+Deze out of memory problemen blijven een terugkomend probleem.
+Bij de retrospective sample imports wordt vaak per abuis een file opgeladen van >5MB wat voldoende is om de server neer te halen. 5MB lijkt klein maar XLS files worden unzipped waardoor ze nog een stuk groter worden.
+Zou het mogelijk zijn om gewoon files te weigeren als ze een bepaalde grootte overschrijden?
+Wij gebruiken de voorziene ExcelFileReaderAdapterBean.
+Zo vermijden we de out of memory errors. Een probleem dat we nu wel heel vaak tegenkomen voornamelijk omdat er extreem veel retrospective import files worden ingeladen
+
+Beste prof. dr. Sys,
+Na ons kort telefonisch contact gaf u aan interesse te hebben in onze dienstverlening omtrent CRF design.
+Graag bespreken we met u het project en de modaliteiten hieromtrent.
+
+Met vriendelijke groeten,
+Lieven Vaneeckhaute
+
+Beste Lynn,
+Hiermede enkel antwoorden.
+
+Om de MultiDAG functionaliteit te laten werken moet ik extra code actief zetten die niet in REDCap zelf hoort.
+Dit kan volledig onafhankelijk van het officieel in productie zetten van uw project.
+Geen probleem, zodra u er klaar voor bent geeft u maar een seintje.Het volstaat om dit enkel op registers te doen. Staging dient enkel om de functionaliteit van MultiDAG na te gaan en is relatief ongevoelig naar de inhoud van de databank.
+
+Met vriendelijke groeten,
+Lieven
+
+
+Beste Liselotte,
+In de biobank worden de stalen voorzien van een barcode. Deze barcode wordt geprint en op de vial aangebracht.
+U kan uiteraard ook andere informatie hiervan koppelen.
+Zodra uw stalen in SLims beschikbaar zijn kan ik er een koppeling voor maken.
+
+Met vriendelijke groeten,
+Lieven
+
+Hallo Stijn,
+Is het mogelijk in slimsgate om een limit op de content queries te zetten? Typisch wordt hier in query land een LIMIT clausule gebruikt.
+
+
+Ter info. Het probleem met de 1000+ records zou opgelost moeten zijn.
+Voor de patient hierarchie is dit niet langer relevant. Dit kunnen jullie best testen met cellijnen.
+
+Beste,
+Gezien ik een spreker ben ga ik er vanuit dat ik me niet expliciet moet registreren.
+Klopt dit?
+
+Met vriendelijke groeten,
+Lieven
+
+Beste Marlies,
+Ik licht Datamanagement reeds toe op de oncolunch toevallig op 11/12. Verdere vragen kunnen uiteraard nog volgen.
+
+Mvg,
+Lieven
+
+Hallo Simon,
+We houden er rekening mee. Veel beterschap!
+
+Mvg,
+Lieven
+
+Hallo Sara,
+De group is wel ingevuld maar bestaat niet op die instantie. Ik heb een check toevoegd en zal nu een vriendelijkere boodschap tonen.
+
+Mvg,
+Lieven
+
+Hartelijke dank Bart!
+
+Mvg,
+Lieven
+
+Hallo Bram,
+Uw wijzigingen werden op productie gezet.
+
+Mvg,
+Lieven
+
+Hoi,
+Ter info dit is hoe men data collecteert voor de rare diseases dataset. Misschien is het handig om de headers over te nemen of iets gelijkaardig te hebben?
+
+Hallo Catherine,
+
+Ik werd vandaag gecontacteerd door de Apotheek omtrent Omnitracker.
+
+Ter info. De apotheek gaf aan ook te willen instappen in het gebruik van Omnitracker. Ze zullen aanwezig zijn op de komende workshop op 4 december waar het startschot gegeven wordt.
+
+Mogelijks is het geen slecht idee om bij Christiaan Polet te vragen voor meer ondersteuning gezien er dan 4 diensten in Omnitracker zullen werken. Op heden krijgt Bart Bekaert daar een halve dag per week voor.
+Daarnaast zou het ook leuk zijn om in te gaan op de vroegere belofte dat als REDCap een groot aantal gebruikers heeft ICT een deel van de ondersteuning op zich neemt. Ik denk hierbij voornamelijk aan onze MySQL databank die ik nu helemaal alleen ondersteun.
+REDCap wordt ondertussen gebruikt door zo’n 400 gebruikers.
+
+Mvg,
+Lieven
+
+Beste dr. Van Tongel,
+Ik heb even uw vragen besproken met mijn collega’s.
+
+Hopelijk volstaan onderstaande antwoorden.
+
+Graag een apart Informed consent template per gebruiker beschikbaar stellen.
+U kan een vraag laten weergeven afhankelijk van de DAG, u herhaalt dan het veld per DAG.  Dit doet u door bij de branching logica het volgende te zetten:
+<image001.png>
+
+U wenst om voor de eerste repeating form iets anders weer te geven dan op andere?
+Dat kan door een descriptive field te gebruiken en het juiste descriptive field te tonen aan de hand van branching logica:
+U kan filteren op [first-instance] of [current-instance] of beter nog kan u gebruik maken van welk overeenkomstig event het over gaat. [event-name]  kan hiervoor getest worden.
+
+Stats per patient voor 1 record in repeating form.
+Er blijkt dat REDCap op dit moment enkel de relevante punten highlight en daarenboven niet sorteert op datum. We zagen hier wel een veelbelovende module voor. Dit testen we nog even uit.
+Afhankelijk van vorige repeating instrument volgende forms niet tonen.
+We kunnen volledige repeating instruments niet volledig verbergen, maar de inhoud van een dergelijk instrument kan u wel verbergen.
+Aan de hand van [previous-instance] of [event-name] kan u echter wel velden verbergen. Het idee kan hier zijn om een descriptive field te tonen afhankelijk van een [previous-instance].
+Er dient wel rekening gehouden te worden dat de repeating instrumenten chronologisch ingegeven moeten worden, zoniet geeft dit fouten.
+
+Voor meer info over deze Smart Variables verwijs ik graag naar het Branching logic venster. Als u drukt op de Smart variables knop krijgt alle mogelijke smart variables te zien. Deze zullen alvast soelaas brengen op heel wat van uw vragen.
+
+<image002.png>
+
+Bij verdere vragen kan u ons steeds contacteren.
+
+Ter info,
+
+Tom gaf door dat Leen dit zal opnemen vanaf de 2e week van december.
+Ik vraag het even na bij Edouard.
+
+Mvg,
+Lieven
+
+
+Dag Pieter,
+De uitrol van Omnitracker en EDGE werd voorgesteld bij de directie en bij ICT. Het plan om Omnitracker + EDGE(zoals ik eerder kort toelichtte) uit te rollen werd positief onthaald en goedgekeurd.
+
+Er werd vermeld dat voor de apotheek een module voorzien wordt in het nieuwe EPD. Heeft u hier reeds meer feedback over gehad?
+Ik weet niet in welke fase deze module zal ontwikkeld worden. Ik vernam dat de klinische studies module normaal gesproken er pas bijkomt in 2022.
+Wij kijken alvast uit naar wat het EPD hier zal aanbieden voor studies maar werken ondertussen aan een volledige integratie in Omnitracker.
+
+Als de apotheek module er in 2020 bijkomt en volstaat om tevens studies op te volgen is het mogelijks niet zo nuttig om over te schakelen naar Omnitracker. Als u echter nog dient te wachten tot 2022 is integratie in Omnitracker geen slecht idee.
+
+Ik geloof dat u, als dienst, het best geplaatst bent om de beste beslissing te nemen. Indien gewenst geef ik graag verdere toelichting.
+
+Met vriendelijke groeten,
+Lieven
+
+Beste Frank,
+
+Hartelijke dank voor de informatie die u verstrekte. Ik heb CAS met succes kunnen opzetten voor onze testomgeving redcapst. Ik combineer de mod_auth_cas module met REDCap, wat aardig werkt.
+U gaf tijdens ons gesprek aan dat het mogelijk is om een aparte pagina op te zetten om daar te splitsen tussen lokale authenticatie en CAS. Kan dit in combinatie met mod_auth_cas? Zoja, heeft u hier een voorbeeld/details van?
+
+Alvast bedankt,
+Lieven
+
+Buitengewoon goed nieuws allen!
+U heeft nu ook toegang tot de productie omgeving van EDGE. Voor toegang tot specifieke projecten kan u steeds mijn contacteren.
+
+https://be.edge-clinical.org/
+
+Met vriendelijke groeten,
+Lieven
+
+Dag Catherine,
+Dag Veronique,
+Ik vind bepaalde zaken vreemd. Waarop gaf de medische raad negatief advies?
+- Het gebruik van het toestel? Mag het toestel gebruikt worden? Misschien gaf de Medische Raad aan dat het toestel niet gebruikt mag worden voor zorg? Of toch niet op die manier?
+- hoe het toestel gebruikt wordt? Vreemd zonder de nodige ict technische feedback.
+- de afspraak rond het toestel? Vreemd dat slechts 1 partij aanwezig was.
+- hoe met middelen omgegaan wordt? Vreemd dat als 2 diensten middelen moeten delen er slechts 1 dienst aanwezig was.
+
+Met vriendelijke groeten,
+Lieven
+
+Deze keer geen virus, maar een handige tool om grote exports op te splitsen.
+
+Mvg,
+Lieven
+
+Beste mr. Middelweerd,
+Naar aanleiding van ons gesprek deel ik graag de functionaliteiten die we graag zien in een Clinical Trial Management System.
+
+Planning en milestone management. Onderzoekers kunnen hier hun planning in doen. Dit omvat ook KPI’s.
+Files delen: Onderzoekers kunnen gemakkelijk templates delen met verschillende sites en intern binnenin een site.
+Pharmacovigilance: Het opvolgen van SAE’s en yearly reporting.
+Apotheek: Tracking van de inventaris van de studie relevante medicatie.
+Trainingmatrix: Men kan gemakkelijk nagaan welke trainingen de onderzoekers volgden en of ze een her opfris cursus dienen te volgen.
+Patienttracking: Men kan gemakkelijk de trend van screened/recruited patiënten terugvinden zonder de identificerende gegevens van de patiënten te delen.
+Algemene rapporten trekken over meerdere studies.
+Configuratie van eigen attributen per studie door de onderzoeker.
+
+We rekenen hier op gemiddeld zo’n 3000 actieve studies per jaar met vermoedelijke honderden simultane gebruikers.
+
+Graag een offerte om dit op te zetten en wat de jaarlijkse kosten zouden zijn.
+
+Hallo Stijn,
+Als ik een groot bestand importeer ahv. Jullie
+
+Flow dan crasht dit de volledige server. Vast een OutOfMemory?
+
+Als ik de file dan opsplits dan krijg ik de volgende boodschap:
+
+Enige idee?
+
+
+Beste allen,
+
+Op dit moment lijkt dit de beste optie om samen te zitten:
+
+Past dit ook voor u Muriel?
+Eline, kan u contact opnemen met Filip Sulas en nagaan of dit past voor hem?
+
+Hallo allen,
+Ik vond eindelijk wat tijd om deze GDPR video
+
+kort samen te vatten in een mindmap. (zie bijlage)
+Hopelijk vindt u deze nuttig. Het omvat heel bondig welke Articles nuttig zijn en waarom, in het kader van klinisch onderzoek.
+
+Hallo Stijn,
+Bedoelt u een hard reset? Of een standaard reboot?
+ICT mag waar ze het nodig achten servers herstarten buiten de business uren, zolang de server maar netjes afgesloten wordt?
+
+Hallo allen,
+De wijzigingen zijn doorgevoerd.
+
+Beste collegae,
+Om onze noden af te stemmen omtrent Omnitracker stelde mevr. Verdyck voor om even samen te zitten in een workshop met de volgende inhoud:
+Ik ging even na in de Outlook planning assistent wat de meest opportune momenten zijn om met z’n allen samen te zitten. Ik vrees dat de momenten dit jaar beperkt zijn.
+Kan u doorgeven of u wenst aanwezig te zijn en zoja, kan u uw voorkeur doorgeven in de volgende doodle?
+
+Hallo Bart,
+Een tijdje geleden bespraken we de mogelijkheid om de data van Omnitracker te bevragen over een MSSQL database ipv. SOAP aanvragen te doen.
+Dit komt aardig goed uit als we op read-only wijze wensen te delen met onderzoekers hoe het met hun onderzoeksaanvraag zit.
+
+Wanneer zouden we dit kunnen implementeren?
+
+
+Hallo Bart,
+Kan u toegang voorzien tot de Bimetra Clinics omgeving voor de volgende mensen?
+Zo kunnen ze alvast inzicht krijgen hoe Omnitracker eruit ziet en al genieten van de informatie dat HIRUZ collecteert.
+Ongetwijfeld moet ook Omnitracker nog geïnstalleerd worden, over hun PC nummers beschik ik niet. Misschien volstaat het om te beginnen in Citrix?
+
+
+Beste Rigtje,
+Op het eerste zicht kunnen we voldoen aan de vereisten. Als de dienst gebruik maakt van de infrastructuur van ICT en/of van REDCap om data te verzamelen geloof ik dat we hieraan gemakkelijk voldoen.
+
+Als de dienst echter data collecteert in Excel of Access dan is er alvast geen audit trail over wie exact wat aanpaste. Hoewel ICT volgens mij aardig voldoet aan heel wat vereisten, als de dienst bv. werkt met USB sticks of op een andere manier fout omgaat met data zal de security infrastructuur van ons ICT departement weinig relevant zijn.
+
+Kort: ICT voldoet vermoedelijk, over de onderzoeker is dat moeilijk te weten behalve als ze REDCap gebruiken.
+
+Nog nooit van gehoord.
+
+Hopelijk kan u iets met deze info.
+
+Hartelijke dank voor dit bestand. Het zorgde voor het nodige vertier.
+
+Als ik het bestand uitpak zie ik dat het bestand 83 MB groot is.
+
+Dat is pittig groot voor een excel bestand met 30 lijnen.
+Ik zou de lijnen kopiëren en plakken in een nieuw bestand.
+Mvg,
+Lieven
+
+Beste allen,
+
+Hartelijke dank voor de meeting. Mijn excuses voor mijn laattijdig aankomst.
+
+Hiermede deel ik graag mijn meeting notes:
+-          Delen van invoice als attachment?
+-          Boekhouding kosten
+o   per patiënt
+§  Geeft het beste overzicht
+§  Onwaarschijnlijk dat andere sites dit zullen doen.
+§  Overzicht voor andere sites kan via reporting.
+o   per site
+§  Ook via de cost templates maar over meerdere patiënten. Nadeel: weinig detail bijgehouden.
+§  Minder detail.
+-          De opvolging van de betalingen kan ook in EDGE. Dit kan via een workflow.
+
+Ik maakte alvast een demo project aan op https://demo.edge-belgium.be/
+
+Naam: Demo BLING
+EDGE ID: 42 (toeval?)
+
+Ik gaf Mevr. Vermeiren ook reeds toegang. U zou een mail moeten ontvangen hebben.
+
+Nemen jullie hier het voortouw om de nodige templates in te geven en de workflow in te geven?
+
+Beste Mevr. Volders,
+
+Ik besprak dit even met m’n diensthoofd. Mits de nodige confidentialiteit deel ik graag mijn eindrapport. U kan het in bijlage terugvinden.
+
+Met vriendelijke groeten,
+Lieven
+
+
+Hartelijke dank voor uw analyse.
+Het blijkt dus geen probleem te zijn in de import flow. De 117 patiënten horen inderdaad onder een NO_ADREMA patiënt. Ik begrijp niet zo goed waarom dit een probleem is? Komt een dergelijke boom niet vaker voor?
+Moet de update van de data manueel gestart worden? Of start de software een dergelijke update zelf?
+
+Met deze info kan ik Genohm attent maken op het problemen zonder dat ze direct kunnen doorverwijzen naar de onderliggende hardware.
+
+Beste Mevr. Reynaert,
+Beste dr. Schelfout,
+
+
+Ik heb dr. Crombez verwijderd als Principal Investigator in EDGE.
+Ik heb de account toegevoegd. Normaalgesproken krijgt dr. Schelfout hiervan een email en kan dan inloggen.
+
+Indien gewenst kan ik EDGE en de minimale registratie vereisten van het KCE kort toelichten. Als dit reeds toegelicht is, dan is deze meeting uiteraard overbodig.
+Wanneer zou dit passen voor u? Normaal gesproken kan u mijn agenda inkijken voor een geschikt moment. Gelieve tevens dhr. De Pla uit te nodigen.
+
+Hallo Stijn,
+Ik krijg vaak de error message in bijlage. Vaak als ik op Derivations druk.
+
+Mogelijks ging er iets fout bij de nieuwe patiënten hiërarchie. Kan u dit inkijken?
+Zou het mogelijk zijn om nog eens de productie data over te kopiëren? Of moet de data ook upgraded worden?
+
+Mvg,
+Lieven
+
+Beste Prof. Lammens,
+Beste allen,
+Hiermede deel ik graag mijn meeting notes.
+
+Uit de meeting bleek dat er op zich geen programmeerwerk meer is aan de pedonco omgeving. (Op het toevoegen van 2 veldjes na.)
+Men kan dus in productie gaan.
+Pediatrische oncologie neemt hiervoor contact op met Genohm. Genohm doet dan het nodige. Graag een seintje naar ons toe wanneer dit ingepland wordt.
+Imports. Er zijn 2 types import bestanden beschikbaar.
+Het template N nummers bestand. Dit kent geen urgentie, dit lossen we later op.
+de gigantische import file voor de eigen instantie.
+Ik ging het even na. De gigantische file(in bijlage) kan ingeladen worden maar er zijn nog enkele stappen nodig. (Apart inladen patiënten, hercombineren vlookup)
+Deze stappen worden door mezelf gedaan, met name 1 week na het in productie stellen van de pedonco omgeving.
+Gelieve het import bestand tegen dan na te gaan op correctheid. Gezien de grootte is een steekproef mogelijks aangewezen.
+Verdere configuratie van de pedonco omgeving:
+Jammer genoeg kunnen de nieuwe datamanagers niet instaan voor verdere customizatie van de pedonco omgeving. We staan voor een uitgebreide oefening in het kader van de nieuwe biobank wetgeving.
+Graag raden we aan om iemand de pediatrische oncologie dienst te trainen als SLims datamanager.
+Deze datamanager kan zich dan volledig inwerken in de noden en het domein van de pediatrische oncologie.
+Genohm biedt datamanager trainingen aan. Zo kan u het onderste uit de kan halen in SLims.
+U bepaalt dan ook zelf de timing van eventuele wijzigingen.
+
+Mvg,
+Lieven
+
+Dag Steven,
+
+Hartelijke dank voor uw meeting notes. Ik verwerk deze in die van mij.
+
+Diseases/sources zijn gewoon lijsten met diseases en sources ahv. de standaarden.
+Dat klopt. Dit is ongetwijfeld om de groepnamen uniform te maken.
+
+Mvg,
+Lieven
+
+Hey Lieven,
+
+In bijlage de template.
+Wanneer de word file aangevuld is, gelieve deze dan even terug te bezorgen dan kan ik een KW nummer toevoegen (alvorens te finaliseren).
+
+Alvast bedankt.
+
+Beste mevr. Moock,
+
+Hartelijke dank voor uw interesse en uw aanwezigheid in de walk-in.
+
+Hiermee deel ik graag de volgende documenten:
+De presentie van daarnet kan u hier vinden:
+https://docs.google.com/presentation/d/1pWeRYQFgA0109UfWx-CMZUHmil231zIzEtM-wYEg2z4/pub?start=false&loop=false&delayms=10000&slide=id.g44bcc63751_0_0
+
+Om toegang te krijgen tot het Vitiligo project zal u eerst even moeten inloggen op het https://registersredcap.uzgent.be systeem met uw LDAP gegevens(hiermee logt u in op het EPD/PC).
+U zal dan uw naam en email adres moeten ingeven. Daarna kan prof. Van Geel of iemand anders met de nodige rechten u toevoegen aan het Vitiligo project.
+
+U gaf aan dat u en uw collega data entry zullen doen en later analyse zullen doen.
+Hopelijk volstond mijn uitleg. Voor bijkomende informatie kan u de volgende video bekijken:
+https://redcap.vanderbilt.edu/consortium/videoplayer.php?video=data_entry_overview_02.mp4&referer=registersredcap.uzgent.be&title=Overview%20of%20Basic%20Data%20Entry
+
+Daarenboven kan u ook heel wat informatie vinden op onze wiki.
+http://redcap.uzgent.be/wiki/index.php/Main_Page
+
+Voor verdere vragen bent u uiteraard steeds welkom op onze walk-ins.
+
+Beste allen,
+Het opzetten van de openredcap.uzgent.be server is voltooid.
+De ePRO piloot kan van start gaan.
+Hartelijke dank aan iedereen voor het opzetten van de nodige infrastructuur.
+
+Ik heb de tnsnames.ora aangepast.
+Op productie blijkt dit nog een kopie. Ik vraag na om dit beschikbaar te maken op de ICT mount /linuxdata zoals op de genohmt server.
+
+Beste Catherine,
+Beste managers,
+
+Tijdens het laatste conclaaf werd voorgesteld om een 10 tal slides te voorzien die we kunnen gebruiken als template.
+
+Zoals een manager van datamanagers betaamd heb ik dit gemaakt in google drive zodat we met z’n alle tegelijk kunnen werken aan deze nieuwe template:
+https://docs.google.com/presentation/d/1HvOQQ7i_ogIbxYXbRa7fj3AZwd9wXmVC_m_25Nv9Q4I/edit?usp=sharing
+
+Het UZGent sjabloon wordt reeds gebruikt.
+
+Dit kan voorkomen dat we 15 versies van dezelfde template gebruiken. Kan ieder voor z’n eigen platform de nodige slides voorzien?
+Ik hergebruikte schaamteloos onze bestaande slides. Feedback altijd welkom.
+
+Beste collegae,
+het kopiëren is voltooid en Omnitracker is updated.
+
+Gelieve voortaan enkel nog de P:\ADBimetraClinics folder te gebruiken en niet langer de S:\ADBimetraClinics share.
+
+Jammer genoeg zijn er enkele bestanden in de NCE die een te grote bestandsnaam hebben om te kopiëren. Via Citrix kan ik dit probleem niet oplossen.
+Ik kijk dit later na. Intussen kan u deze bestanden nog terugvinden in de OBSOLETE DO NOT USE. USE P DRIVE INSTEAD folder.
+Hallo Katya,
+mag ik jou er bij betrekken om over dat luik de nodige info te verschaffen
+Ik neem aan dat u op datamanagement in het kader klinisch onderzoek doelt? Als het gaat over clinical datamanagement valt dit alvast in onze visie. Wij helpen graag. Kan u duiding geven wat dit exact zou inhouden? Zodra ik exact weet wat dit inhoudt kan ik afstemmen met prof. Van Der Straeten.
+
+Mvg,
+Lieven
+
+PROOF OF CONCEPT VAN EHR4CR IMPLEMENTATIE. INHOUDSOPGAVE WOORDENLIJST 1. INLEIDING 2. PROJECT 3. STATE OF THE ART 3.1 LITERATUUR 3.2 OPLOSSINGEN EN NETWERKEN 3.2.1. I2B2 INTRODUCTIE FUNCTIONALITEIT PATIËNT OPZOEKING OPBOUWEN RAPPORTAGEMOGELIJKHEDEN CONCLUSIE UITBREIDBAARHEID KOSTPRIJS/LICENTIE 3.2.2. HET SHRINE NETWERK 3.2.3. CUSTODIX INSITE INTRODUCTIE FUNCTIONALITEIT PATIËNT OPZOEKING OPBOUWEN RAPPORTAGEMOGELIJKHEDEN CONCLUSIE UITBREIDBAARHEID KOSTPRIJS/LICENTIE 3.2.4. EHR4CR CHAMPION PROGRAMME 4. OPLOSSING 4.1. CUSTODIX WIE/WAT 4.2. ARCHITECTUUR 5. IMPLEMENTATIE OPLOSSING 5.1 GEBRUIKTE DATABRONNEN 5.1.1 DEMOGRAPHISCHE GEGEVENS DEFINITIE DATA PROVIDER DATATEKORTKOMINGEN 5.1.2 VISITE GEGEVENS DEFINITIE DATA PROVIDER DATATEKORTKOMINGEN 5.1.3 ZORGVERSTREKKERS DEFINITIE DATA PROVIDER DATATEKORTKOMINGEN 5.1.4 MEDICATIE VOORSCHRIFT DEFINITIE DATA PROVIDER DATATEKORTKOMINGEN 5.1.5 LABORESULTAAT DEFINITIE DATA PROVIDER DATATEKORTKOMINGEN 5.1.6 DIAGNOSES & PROCEDURES DEFINITIE DATA PROVIDER DATATEKORTKOMINGEN 5.2. ONGEBRUIKTE DATABRONNEN 5.3. ETL 5.3.1. PERFORMANCE 5.3.1.1. DE DATA BEVRAGING OPDELEN IN KLEINERE HANDELBARE PORTIES 5.3.1.2. BIG DATA TECHNOLOGIE GEBRUIKEN OM DEZE BEVRAGING TE DOEN. 5.3.1.3. EEN GEOPTIMALISEERD PROGRAMMA SCHRIJVEN OM DE DATA TE VERWERKEN. 6. VALIDATIE 6.1. TECHNISCHE VALIDATIE 6.1.1 BEVAT DE DATABRON CORRECTE DATA? 6.1.2 WORDT DE DATABRON CORRECT GEÏNTERPRETEERD? 6.1.3 VERWERKT DE TOEPASSING DE DATA CORRECT 6.2. UITGAANDE RESULTATEN 6.2.1 VOORKOMEN MISBRUIK GEGEVENS 6.2.2 CORRECTHEID VAN DE UITGAANDE DATA VERGELIJKING BEREKENDE POPULATIE EN GESCREENDE POPULATIE BEPALING ACCURAATHEID DOOR IDENTIFICEREN VAN DE PATIËNTEN IN DE PATIËNTEN POPULATIE VALIDATIE OEFENING PIONEER STUDIE CONCLUSIE ANDERE VALIDATIES 7. CONCLUSIE WOORDENLIJST - ATC: Anatomical Therapeutic Chemical Classification System is een indeling voor geneesmiddelen. Het systeem is een hulpmiddel bij het onderzoek naar geneesmiddelengebruik teneinde de kwaliteit daarvan te verbeteren en behoort tot de familie van internationale classificaties (WHO-FIC) van de Wereldgezondheidsorganisatie (WHO). - Clinical trial: Een klinische studie waarin deelnemers een interventie(of geen interventie) toegekend krijgen opdat onderzoekers de effecten van de interventies op biomedisch vlak of gezondheid kunnen evalueren. De toekenning wordt bepaald in het studie protocol. - Clinical Trial Design phase: De fase waarin het protocol ontworpen wordt. Dit omvat onder andere de inclusie/exclusie criteria. - Clinical Trial Feasibility: de haalbaarheidsanalyse van een clinical trial op strategische, wetenschappelijk, operationeel vlak en patiënten rekrutering. - Custodix: De partner waarmee wordt samengewerkt aan dit project. - Datawarehouse: Een databron waar een grote hoeveelheid data geaccumuleerd wordt uit verschillende andere databronnen binnen een bedrijf of instelling. - EPD: Het elektronisch patiënten dossier. - ICD: International Classification of Diseases is een internationale standaard voor de classificatie van ziekten.(http://www.who.int/classifications/icd/en/) - Klinische studie: is een studie die de werkzaamheid en veiligheid van een interventie of medicatie test. - LOINC: Logical Observation Identifiers Names and Codes een universele standaard voor het identificeren van medische laboratorium tests, metingen en observaties. - Observationele studie: Onderzoek waarbij de onderzoeker zich beperkt tot het verrichten van waarnemingen. - Opgenomen patiënt: de patiënt verblijft in het ziekenhuis gedurende een onafgebroken verblijf van meer dan 24 uur. - Patient Recruitment Feasibility: de haalbaarheidsanalyse van de vooropgestelde patiënten rekrutering. - Poliklinische patiënt: de patiënt verblijft niet in het ziekenhuis, maar komt op afspraak. - Principal investigator(PI): de hoofdonderzoeker voor een bepaald welomschreven project , meestal in de wetenschappen, zoals een laboratorium onderzoek of een klinische trial. - Protocol: De geschreven omschrijving van een klinische studie. Dit omvat het doel van de studie, design en de gebruikte methodes. - Selectiecriteria: de medische of sociale standaarden die bepalen of een persoon toegelaten wordt tot een clinical trial. Ze zijn gebaseerd op factoren als leeftijd, geslacht, ziekte, behandelingsgeschiedenis en andere medische condities. - Webapplicatie: een toepassing die op een webserver draait en via de webbrowser kan worden benaderd. - Workbench: De grafische gebruikersinterface van InSite. Zie : https://clinicaltrials.gov/ct2/about-studies/glossary 1. INLEIDING Naar aanleiding van het document “Project Initiatie Document(PID) Bimetra werkgroep EHR4CR” is een proof of concept(POC) gestart. In deze PID staan de doelstellingen en deliverables omschreven. De vooruitgang in health ICT levert heel wat opportuniteiten voor de klinische onderzoekssector. Het hergebruik van patiënten gegevens uit het EPD voor klinisch onderzoek is nog uiterst zeldzaam. Een EPD die deze data beschikbaar kan stellen kan uitermate nuttig zijn bij klinisch onderzoek door - herhaaldelijke capteren van dezelfde data tegen te gaan - een beter inzicht te geven in patiënten populaties. - nagaan van clinical trial feasibility - screenen van populaties - ondersteuning van patiënten recruitering In deze POC wordt patiënten recruitment en protocol feasibility software beschouwd. Bij protocol feasibility onderzoekt men of er voldoende patiënten in aanmerking komen voor een specifiek klinisch protocol. Hierbij dient de patiënt te voldoen aan een complexe set aan klinische en demografische eisen. De beschikbaarheid van een dergelijke tool laat ook toe om aan protocol design te doen. Dankzij deze software kan men in realtime de inclusie- en exclusiecriteria aftoetsen ten opzicht van de patiëntenpopulatie en zo potentieel criteria optimaliseren. Hiertoe wensen we gebruik te maken van een software pakket dat op snelle en accurate wijze inzicht kan geven op de patiëntenpopulatie die in aanmerking kan komen voor selectie in een klinische studie. Door een sneller en accurater antwoord te geven wensen we de onderzoeker beter te ondersteunen en ook het UZGent als partner in klinische studies en onderzoek te promoten. Custodix ontwikkelde reeds een dergelijke toepassing dat InSite heet. Voor deze POC integreert men met de InSite toepassing. De gebruikersomgeving en communicatielaag werden reeds ontwikkeld. Er rest enkel nog een clinical datawarehouse op te stellen waarmee dit systeem kan interageren. We beschrijven in dit document de huidige state of the art, de beschikbare toepassingen, de integratie van ziekenhuisdata met dergelijke toepassingen, de validatie van die data en de resultaten voor een aantal protocols afgeleid uit reeds afgeronde bestaande klinische studies. 2. PROJECT Een klinische studie doorloopt doorgaans de volgende verschillende stappen: In de Design phases, die de Clinical trial Feasibility omvat, en de uiteindelijke recruitment is een goed inzicht over de patiëntenpopulatie vaak cruciaal. Zo zal een onderzoeker in de Design phase de inclusie/exclusie criteria wensen af te toetsen op de bestaande patiëntenpopulatie. Later wordt er tijdens de ontwikkeling van het protocol de Patient Recruitment Feasibility geëvalueerd. Hierbij onderzoekt men hoeveel patiënten voor het vooropgestelde protocol per site in aanmerking komen. Bij multicentrisch onderzoek wordt hierbij per site de PI gecontacteerd die zelf deze opzoeking uitvoert. Als alle stappen met succes doorlopen werden kan men aanvangen met de recruitment waarbij het terugvinden van de relevante patiënten van fundamenteel belang is. Het terugvinden van de correcte patiënten blijkt een belangrijk onderdeel van klinisch onderzoek jedoch is voor dit soort bevragingen tot op heden nog geen algemene ziekenhuisbrede oplossing beschikbaar. Hoewel op het eerste gezicht dit probleem eenvoudig lijkt is het correct uitfilteren van de relevante patiënten geen eenvoudige oefening. Hiertoe is het aangewezen om een clinical datawarehouse op te zetten die de nodige informatie op een gestructureerde wijze omvat. In dit project wensen we software te evalueren en potentieel beschikbaar te stellen voor de bovenstaande use cases. Daarenboven kan het opzetten van een clinical datawarehouse ook gebruikt worden voor andere use cases zoals bv. als databron bij observationele studies. 3. STATE OF THE ART 3.1 LITERATUUR Protocol feasibility design is geen nieuwe discipline. Vaak schatten de PIs zelf in hoeveel patiënten in aanmerking kunnen komen omdat zij hun patiënten en de bijhorende criteria goed kennen. Zij gaan hierbij mogelijks ten rade in hun EPD of hebben dienstspecifieke software voorzien om onder andere aan deze vraag te beantwoorden. De PI kan hierbij manueel te werk gaan en elke beschikbare patiënt zelf beoordelen, of de PI kan ondersteunende software gebruiken. Bij dergelijke ondersteunende software is de expressie van inclusie en exclusie criteria cruciaal. Op heden worden de selectiecriteria in studie protocollen als vrije tekst omschreven. Om de relevante patiënten terug te vinden dient men te beschikken over eenduidige en concrete expressies. Door de vrijheid in vrije tekst komt het wel vaker voor dat men vage termen gebruikt. Een typisch voorbeeld hierbij is ‘Major surgery’. Om vaagheid tegen te gaan wordt bij inclusie/exclusie criteria en in de patiëntgegevens terminologie standaarden gebruikt om op accurate wijze de correcte patiënten terug te vinden en integraties mogelijk te maken.(semantische interoperabiliteit) Een studie(Formal representation of eligibility criteria: A literature review) bestudeerde 27 verschillende modellen en systemen voor het uitdrukken van inclusie/exclusie criteria waaronder “Eligibility Rule Grammar and Ontology(ERGO)”, “Clinical research filtered query(CRFQ)” en “Agreement on standardized Inclusion Requirements for Eligibility (ASPIRE)”. In deze modellen maakt men het onderscheid tussen de volgende expressies: - adhoc expressies - logica gebaseerde expressies - object georiënteerde expressies - temporele expressies. Elk van deze oplossingen bevat voor en nadelen. - Adhoc oplossing ontbreken aan predicaat logica en tijdsgebonden expressiviteit. Hierdoor kunnen ze relaties tussen variabelen niet uitdrukken. - Logica gebaseerde oplossingen: hebben gebrekkige tijdsgebonden expressiviteit en kunnen niet gemakkelijk eenheidsconversies uitvoeren. bv. SBP > 130 mm Hg. - Object georiënteerde talen: weinig schaalbaar, wordt al snel traag bij grote hoeveelheden data. - Tijdsgebonden bevragingen: Voornamelijk focus op temporele aspecten en weinig op ontologie. Alle mechanismen op zich ontbreken aan schaalbaarheid of expressiviteit. Vaak wordt om dit te remediëren een combinatie van technieken gebruikt. Criteria worden onderverdeeld in: - stabiele criteria: precondities die niet veranderen over tijd. - variabele criteria: data die relatief stabiel is over korte periodes. bv. laboresultaten - controleerbare criteria: omstandigheden die de behandelend arts kan manipuleren. - subjectieve criteria: subjectief criterium in te schatten door arts bv. waarschijnlijkheid op overleven patiënt. - Speciale criteria: ongebruikelijke labo resultaten die niet beschikbaar zijn in routine behandeling. 3.2 OPLOSSINGEN EN NETWERKEN 3.2.1. i2b2 INTRODUCTIE De NIH(National Institutes of Health) is een agentschap in de VS dat verantwoordelijk is voor biomedisch en gezondheidsonderzoek en stelt hiertoe ‘National Centers for Biomedical and health-related research’ op. Eén van deze “Centers” is het i2b2 Center. Het i2b2 Center ontwikkelde een schaalbaar software omgeving dat onderzoekers in staat stelt de bestaande klinische gegevens en genomische data voor onderzoek te gebruiken. Dit vergemakkelijkt onder andere het ontwerp van gerichte therapieën voor patiënten met genetische ziektes. Dit platform wordt internationaal breed ingezet onder andere in het CTSA(Clinical and Translational Science Awards Program) netwerk, in klinische academische centra en in de industrie. i2b2 is een opensource webapplicatie en is gratis beschikbaar. Er is tevens een demo omgeving beschikbaar: Bron: https://www.i2b2.org/webclient/ FUNCTIONALITEIT PATIËNT OPZOEKING OPBOUWEN i2b2 omvat een module die toelaat om inclusie/exclusie criteria te definiëren en uit te voeren op de i2b2 databank. Om inclusie/exclusie criteria uit te kunnen drukken maakt i2b2 gebruik van een logica gebaseerde taal met temporele expressies. (zie 3.1 Literatuur voor meer info) Men kan navigeren door standaard terminologieën en de relevante termen te slepen naar een “criteria groep”. De terminologie is gemakkelijk navigeerbaar dankzij een opsplitsing in een boomstructuur. Tevens is er een algemene zoekfunctie beschikbaar. Een patiënt komt in aanmerking als die aan één van de criteria voldoet in een ‘criteria groep’. Door meerdere groepen toe te voegen kan men andere noodzakelijke criteria toevoegen. Zo dient in het bovenstaande voorbeeld de patiënt gediagnosticeerd te zijn met Diabetes mellitus type I of type II. Exclusies worden ingevoerd door ‘Exclude’ te markeren. Groepen kunnen naar wens aangemaakt worden. Men kan eveneens temporele criteria opleggen. Dit kan door het definiëren van ‘events’. Men koppelt een event aan een ‘criteria groep’. Zo definieert men een punt in tijd waarin een relevante patiënt voldoet aan de vooropgestelde criteria. Door criteria groepen te combineren met events en het vastleggen van de volgorde van de events kan men ingewikkelde constructies uitwerken. RAPPORTAGEMOGELIJKHEDEN Men kan de eerder gedefinieerde inclusie/exclusie criteria gebruiken om bevragingen te doen op de data. Zodra men de query wenst te draaien wordt gevraagd welk soort resultaat men wenst. In een dergelijk rapport kan men kiezen voor: - De patiëntengegevens - Overzicht visites van de patiënt - Het aantal patiënten - een tijdslijn met de patiëntgegevens per patiënt. - Verdeling van de patiënten aan de hand van geslacht, leeftijd, … CONCLUSIE In i2b2 kan men zeer ingewikkelde criteria opbouwen. Een grote hoeveelheid aan inclusie criteria, die tegelijk dienen te gelden, impliceert een groot aantal groepen. Een groot aantal groepen is in de huidige gebruikersinterface vrij onhandig en het overzicht gaat al snel verloren. Het bevragen van data aan de hand van het temporele aspect is goed uitgewerkt en sterk expressief maar kan best ingewikkeld zijn. Ook hier raakt men al snel het overzicht kwijt. UITBREIDBAARHEID I2B2 heeft een interessante architectuur opgesteld die het mogelijk maakt om de huidige software uit te breiden met plugins. Men spreekt over de ‘i2b2 hive’ waarbij elke plugin een cel is in de bijenraat. KOSTPRIJS/LICENTIE Gratis. https://www.i2b2.org/software/i2b2_license.html 3.2.2. het SHRINE netwerk In het kader van het Clinical and ‘Translational Science Award’ programma werd door de Harvard Medical School(HMS) een datanetwerk opgezet waarmee de deelnemende Harvard-ziekenhuizen hun i2b2-instanties kunnen koppelen voor het delen van geanonimiseerde, geaggregeerde aantallen van patiënten die voldoen aan geselecteerde inclusie- en exclusiecriteria voor demografische, diagnose, medicijnen en laboratoria gegevens. Het doel van dit netwerk, SHRINE (Shared Health Research Informatics NEtwork) genaamd, is het ondersteunen van populatiegericht onderzoek, beoordelen van cohorten voor potentiële klinische proeven en het vormen van hypotheses voor followup studies, door de EPD data in het ziekenhuis te hergebruiken. De software is opensource en vrij beschikbaar op http://open.med.harvard.edu/display/SHRINE/Community en is aangepast en opgenomen door verschillende groepen die grote databases willen opbouwen uit uiteenlopende bronnen. SHRINE wordt momenteel overwogen in de volgende projecten: ● I2b2-CICTR (Cross-Institutional Clinical Translational Research-project), geleid door de Universiteit van Washington. ● CARRAnet (Childhood Arthritis and Rhematological Research Alliance), gebruikt SHRINE om het grootste register van pediatrische patiënten met reumatische aandoeningen op te zetten. Https://carranetwork.org. ● De Harvard IBD Longitudinal Data Repository gebruikt SHRINE om een register van pediatrische en volwassen ontstekingsdarmziekte op te bouwen in het “Childhospital Boston, Brigham and Women's Hospital en het “Beth Israel Deaconness Medical Center”. ● Het Pediatric IBD Network (ImproveCareNow Enhanced Registry), gebruikt SHRINE om een modulair register op stellen omtrent chronische pediatrische ziektes. Https://improvecarenow.org. 3.2.3. Custodix Insite INTRODUCTIE Het EHR4CR project is een IMI project dat van 2011-2016 liep en had als missie om een schaalbare, breed inzetbare oplossing te bieden om EPD systemen en klinische research systemen met elkaar te laten interageren. Dit was een samenwerking tussen 35 academische instellingen en een 10 tal commerciële partners. (http://www.ehr4cr.eu/) Hieruit groeide 2 initiatieven: - I~HD - Het “Champion Programme” Meer informatie over dit netwerk kan u vinden onder 3.2.4. EHR4CR CHAMPION PROGRAMME & I~HD. Tijdens het EHR4CR project wist Custodix een software oplossing te ontwikkelen: Insite. Deze oplossing omvat 2 toepassingen: 1. een protocol feasibility tool die over verschillende sites kan patiënten bevragen. Hierbij zijn enkel cijfers beschikbaar. 2. een recruitment tool die enkel lokaal per site beschikbaar is. De data verlaat de site niet. De protocol feasibility tool is beschikbaar voor de farma. Zij krijgen nooit patiëntgegevens te zien. Enkel aantallen. De academische instellingen kunnen de recruitment tool gratis gebruiken. Het is deze software hier geëvalueerd wordt. Bemerk dat de software en diens gegevens enkel binnen de campus beschikbaar zijn voor zij met de nodige authenticatie gegevens. FUNCTIONALITEIT PATIËNT OPZOEKING OPBOUWEN Insite omvat een module die toelaat om inclusie/exclusie criteria te definiëren en uit te voeren op de onderliggende databank. Om inclusie/exclusie criteria uit te kunnen drukken maakt Insite gebruik van een logica gebaseerde taal met temporele expressies. (zie 3.1 Literatuur voor meer info) Men kan navigeren door standaard terminologieën en filters opbouwen door de relevante termen te selecteren. De terminologie is gemakkelijk navigeerbaar dankzij een opsplitsing in een boomstructuur. Tevens is er een algemene zoekfunctie beschikbaar. Criteria waarvoor geen patiënten beschikbaar zijn worden automatisch uitgefilterd. Onnuttige criteria worden hierdoor vanzelf niet gebruikt. Men kan exclusie criteria modelleren door negatie te gebruiken in de Filters. Onder 1 filter kan men meerdere criteria combineren aan de hand van schakellogica. Per filter kan men optioneel verschillende tijdsrestricties opleggen: Tijdsvoorwaarde: Bepaalt dat een criterium maximaal tot x maanden/jaar voorheen voorkwam. Gebeurtenisvoorwaarde: Bepaalt dat een criterium maximaal tot x maanden/jaar voorheen y maal voorkwam. Gebeurtenis X voor gebeurtenis Y: Bepaalt dat een criterium X een maximaal Z aantal jaar/maand voorheen voorkwam voor criterium Y. Visite voorwaarde: Bepaalt dat een criterium A en B wel of niet mogen samen voorkomen tijdens dezelfde visite. Gelijktijdige Observatie voorwaarde: Bepaalt dat een criterium A en B wel of niet samen werden geobserveerd. Door de referentiedatum aan te passen kan men het protocol laten draaien voor data in het verleden. Na het bepalen van de criteria en referentiedatum kan men de cohort opslaan. De Insite tool berekent op de achtergrond hoeveel patiënten in aanmerking komen. RAPPORTAGEMOGELIJKHEDEN Na het opslaan van het protocol wordt berekend welke patiënten er in aanmerking komen. Men krijgt een overzicht van alle patiënten die in aanmerking komen. Men kan indien gewenst extra informatie inwinnen door op de info knop te drukken. Hier kan men alle klinische gegevens van de patiënt bekijken. Eenmaal het protocol opgeslagen is kan men enkel de resultaten zien. In de gebruikersomgeving is er geen mogelijkheid om het oorspronkelijk protocol te bekijken, noch de referentiedatum te zien. Kleine aanpassingen zijn niet mogelijk, er moet telkens een nieuw protocol gestart worden. Dit kan wel aan de hand van eerder opgeslagen criteria. Er is eveneens een audit trail beschikbaar. Men kan altijd zien wie welke bevraging deed. Dit omvat eveneens de inclusie/exclusie criteria en hoeveel patiënten gevonden werden. CONCLUSIE Insite maakt het bevragen van criteria gemakkelijker en overzichtelijker dan i2b2. Desondanks dat Insite gebruiksvriendelijker is dan i2b2 is er een leercurve aan verbonden. De Insite tool is nog steeds in ontwikkeling en bevat nog enkele eigenaardigheden. Een andere handigheid is dat de gebruiker ook in realtime een berekening krijgt van grootte van de populatie bij het aanpassen van de criteria. Dit werkt jammer genoeg enkel voor eenvoudige criteria, voor ingewikkelde protocollen kan dit al enkele minuten duren. Bij Custodix onderzoekt men nog hoe de respons sneller kan. UITBREIDBAARHEID Enkel Custodix kan de Insite tool uitbreiden. Er zijn nog geen mogelijkheden voor integraties voorzien. Onderliggend gebruikt men wel de i2b2 databank structuur. Men kan gemakkelijk overschakelen naar i2b2 en diens functionaliteit en schaalbaarheid verder gebruiken. KOSTPRIJS/LICENTIE De Insite tool is enkel gratis voor leden van het EHR4CR Champion Programme. 3.2.4. EHR4CR Champion Programme Het EHR4CR Champion Programme is een internationale samenwerking tussen de academische partners en de EFPIA(European Federation of Pharmaceutical Industries and Associations) partners met als doel om klinisch onderzoek in Europa beter te ondersteunen en versnellen. Academische Partners hierbij zijn: - UZGent - Del Mar (Barcelona) - HM (Madrid) - 12 de Octobre (Madrid) - IRST (Italy) - Turku (Finland) - Hannover (Germany) - Ulm (Germany) - Zottegem - AZ Turnhout - Charleroi - Navarra (Spain). - UZA - Liege - St. Luc Bouge - AZ Sint Lucas - UZ Brussel - UCL st. Luc EFPIA partners: - Amgen - AstraZeneca - Bayer - BI - Roche - Sanofi - Janssen - ICON Het European Institute for health Data (I~HD) is een onafhankelijk non-profit partij en heeft als partner onder andere als doel: - het verzekeren van goed bestuur. - het promoten van hergebruik van klinische data, het gebruik van data standaarden en semantische interoperabiliteit. - beschermen van de privacy van de patiënt - het optimaliseren van de kwaliteit van de data. 4. OPLOSSING 4.1. CUSTODIX WIE/WAT In 2015 werd in het kader van EHR4CR een samenwerking gestart tussen het UZGent en Custodix. Er werd een piloot gestart in samenwerking met UZ ICT en Bimetra. UZ Gent was ook één van de eerste academisch centra om een piloot te starten en in het ‘Champion Programme’ te stappen. Meer informatie over het ‘Champion Programme’ kan gevonden worden in 3.2.4. EHR4CR Champion Programme. 4.2. ARCHITECTUUR Het opzetten van een clinical datawarehouse is een big data probleem. We noemen een probleem een big data probleem zodra één of meerdere van de volgende problemen zich voordoen: - De data is zo groot dat deze niet op efficiënte wijze kan behandeld worden. (Volume) - De data komt uit verschillende heterogene databronnen die niet gemakkelijk samengebracht kan worden.(Variety) - Er heerst onzekerheid over de data. (Veracity) - De inkomende data stroom is te groot om tijdig behandeld te worden. (Velocity) In deze POC komen voornamelijk problemen voor op vlak van grote volumes en heterogene databronnen. Doorgaans hanteert men een Extract-Transform-Load(ETL) proces om big data problemen op te lossen. Een ETL proces bestaat uit 3 stappen: 1. Extract: gegevens worden uit verschillende databronnen gelezen en omgezet in één enkel formaat. Dit proces haalt de gegevens uit elke databron en slaat deze op in een specifieke databestemming. De databronnen kunnen een aantal databaseformaten, platte bestanden of documenten zijn. Doorgaans is het doel om alle data uit het bronsysteem te extraheren zonder deze te modificeren. Hierbij kunnen bepaalde controles en filters worden uitgevoerd om de gegevens aan te passen om aan een verwachte indeling te voldoen of selectief data (bv. mogelijk vertrouwelijke informatie) te verwijderen. 2. Transform: in deze stap wordt de data van de verschillende systemen consistent gemaakt en gekoppeld. Enkele van de belangrijkste activiteiten hier zijn : ▪ Standaardisatie – data is toegewezen aan een consistente set van vaste waarden ( bv. LOINC, ATC, andere vast gekozen waarden…) ▪ Reiniging – controleert geldigheid en verwijdert of wijzigt gegevens om correct te zijn. ▪ Vreemde sleutels (foreign keys) – het gebruik van sleutels om herhaling van data tegen te gaan en de relatie te leggen met data uit dezelfde of andere databronnen. ▪ Omzetting – organiseert gegevens om optimaal bevraagbaar te zijn. 3. Load: De getransformeerde gegevens worden weggeschreven naar een datawarehouse. 5. IMPLEMENTATIE OPLOSSING In dit hoofdstuk worden de geëvalueerde databronnen binnen het UZ Gent netwerk besproken: - de definitie van de gebruikte data. - de data provider - eventuele tekortkomingen of uitdagingen 5.1 GEBRUIKTE DATABRONNEN We gebruiken enkel de test databronnen om bij deze exploratie geen onnodige belasting te veroorzaken op de productie omgeving. Technische details kan u vinden in de appendix “Technische details databronnen”. 5.1.1 Demographische gegevens DEFINITIE Met de demografische gegevens wordt bedoeld het identificatie nummer(“adrema nummer”) van de patiënt, geboortedatum, eventuele sterfdatum en geslacht. DATA PROVIDER Deze data behoort tot de standaard functionaliteit van een EPD. Een EPD omvat alle benodigde demografische gegevens. DATATEKORTKOMINGEN De data is soms vaag bv. voor geboortedatum ontbreekt soms maand en dag en wordt enkel het jaar bijgehouden. Bepaalde data heeft een tijdelijk karakter: Soms krijgt een patiënt bij een noodgeval een tijdelijk identificatienummer. Deze worden na enige tijd samengevoegd en verwijderd. Daarom worden deze patiënten buiten beschouwing gelaten in de POC. 5.1.2 Visite gegevens DEFINITIE Een visite is een bezoek van een poliklinische of opgenomen patiënt aan het ziekenhuis. Een visite omvat altijd de volgende gegevens een start datum, einddatum, een link naar de patiënt en een identificatienummer van de visitatie. Dit identificatienummer wordt over verschillende databronnen gebruikt om de visite uniek te identificeren. Door de beperkte accuraatheid van de begin en einddatum heerst er onzekerheid over de periode waarover deze data geldt. DATA PROVIDER Deze data behoort tot de standaard functionaliteit van een EPD. Een EPD omvat de benodigde visitatie gegevens. DATATEKORTKOMINGEN De begin en einddatum zijn sterk onbetrouwbaar. Door een bug werd eerder sommige visites zeer lang opengehouden. 5.1.3 Zorgverstrekkers DEFINITIE Met zorgverstrekker wordt bedoeld: - de beroepsbeoefenaar die zorg verleent aan patiënten - de medische structuur waartoe deze beroepsbeoefenaar behoort. bv. Dienst, ziekenhuis,… DATA PROVIDER Deze data kan in beperkte mate teruggevonden worden in het huidige EPD. DATATEKORTKOMINGEN De gebruikte databronnen verwijzen niet naar deze data. Daarenboven is er in deze data geen identificatie van de dienst(bv. Apotheek) of andere hiërarchie gevonden. 5.1.4 Medicatie voorschrift DEFINITIE Een medicatie record komt overeen met een voorschrift zoals deze aangevraagd is bij de dienst apotheek. Dit omvat niet de toediening (zie datatekortkomingen voor de reden hiertoe) Voor elk medicatie record beschikken we over de volgende gegevens: - visite identificatie - patiëntidentificatie - ConceptCode: De ATC code overeenkomstig met voorgeschreven medicatie. - Start datum: De start datum vanaf wanneer het voorschrift geldig is. - Eind datum: De eind datum tot wanneer het voorschrift geldig is. Deze databron bevat data van 2005 tot en met het heden. DATA PROVIDER Deze data wordt aangeleverd door de apotheek van het UZGent. DATATEKORTKOMINGEN Bij poliklinische patiënten is er geen data beschikbaar over de toediening van de voorgeschreven medicatie. Er is dan ook geen mogelijkheid op controle gezien de patiënt niet op het ziekenhuis verblijft. 5.1.5 Laboresultaat DEFINITIE Met een laboresultaat bedoelen we het resultaat van een klinische test uitgevoerd in een klinische labo. Typisch gegevens zijn: - een identificatie van de patiënt. - een referentie naar de visitatie van de patiënt. - De uiteindelijk waarde van het resultaat (al dan niet numeriek) - de ULN: Dit is de upper limit of normal. Als de resultaat waarde van de klinische test hierboven valt dan wordt het resultaat als abnormaal hoog beschouwd. - de LLN: Dit is de upper limit of normal. Als de resultaat waarde van de klinische test hieronder valt dan wordt het resultaat als abnormaal laag beschouwd. DATA PROVIDER De laboresultaten worden aangeleverd door het centraal labo. DATATEKORTKOMINGEN Het data volume is zeer groot en is daarom ook zeer traag te bevragen. Sommige data attributen worden als vrije tekst opgeslagen. De aanwezigheid van te interpreteren data: Laboresultaten dienen vaak vergeleken te worden met een referentie interval(LLN, ULN). Dit referentie interval is afhankelijk van bepaalde karakteristieken van de patiënt (bv. zwangerschap) of parameters van de afname. De keuze van referentie interval steunt hierbij op de interpretatie van de arts en wordt niet in de data opgeslagen. In het labo systeem is echter wel een attribuut voorzien met waarde L of H. Dit is een veld die bepaalt of een waarde boven of onder het referentie interval ligt. Dit veld is manueel ingevuld. Jammer genoeg kan deze waarde niet gebruikt worden in de oplossing van Custodix omdat sommige inclusie/exclusie criteria expliciet de referentiewaardes bevragen. 5.1.6 Diagnoses & procedures DEFINITIE Een diagnose record komt overeen met een diagnose gesteld door een medisch expert in het EPD. Voor elke diagnose houden we een link bij naar de visite en de patiëntidentificatie. Cruciaal zijn een diagnose/medische ingreep code (in ICD9/ICD10) en het tijdstip dat de diagnose gesteld werd of de ingreep uitgevoerd werd. Deze databron bevat data vanaf 2008. DATA PROVIDER Zoals verplicht bij wet moet het ziekenhuis minimale ziekenhuis gegevens(MZG) beschikbaar te stellen aan de FOD Volksgezondheid. Dit omvat de MKG en Minimale verpleegkundige gegevens(MVG) registratie. Sinds 1990 wordt deze registratie verplicht door het ministerie van Volksgezondheid en dit voor ieder klassiek ziekenhuisverblijf. Sedert 1995 gebeurt dit ook voor de poliklinische patiënten en sinds 2000 voor de pasgeborenen. MKG-gegevens bevatten zowel administratieve als medische gegevens (diagnoses, ingrepen). Op basis hiervan worden de ziekenhuisverblijven in (homogene) pathologiegroepen geklasseerd (APR-DRG groepering). Deze pathologiegroep bepaalt in belangrijke (en steeds toenemende) mate de basisfinanciering van het ziekenhuis via zijn patiënten-mix. Deze geanonimiseerde gegevens worden semesterieel aan de overheid doorgegeven. In feite vertaalt MKG de realiteit van de medische activiteit van het ziekenhuis. MKG wordt de laatste jaren steeds meer gebruikt als basis voor bijkomende financieringen voor het ziekenhuis en is het dus belangrijk dat deze gegevens correct, volledig en conform het medisch dossier worden doorgegeven. Meer en meer gebruikt de overheid deze registraties ook voor de toetsing van de medische kwaliteit in ziekenhuizen. In deze piloot werd deze databron verkozen omdat de diagnoses en ingrepen reeds beschikbaar zijn als ICD9/ICD10 codes. Bij het coderen van deze data door de MKG cel wordt alle data in het EPD beschouwd. (behalve de poliklinische gegevens) DATATEKORTKOMINGEN De MKG cel krijgt maximaal 6 maanden de tijd om de gegevens te coderen. Hierdoor moeten we 6 maand wachten op de resultaten van deze codering. De MKG cel dient geen data te coderen omtrent poliklinische patiënten. In databron is er geen diagnose en ingreep informatie beschikbaar van dergelijke patiënten. 5.2. ONGEBRUIKTE DATABRONNEN Diensten kiezen vaak zelf welke software ze gebruiken voor het registreren van hun data. Dit zorgt voor fragmentatie van data over verschillende databronnen in het ziekenhuis. Het huidige EPD maakt gebruik van observatie bladen. Dit zijn formulieren die per dienst geconfigureerd kunnen worden. Doordat elke dienst beslist over de inhoud van deze observatiebladen is er ook geen consensus omtrent naamgeving en semantiek van de invulvelden. Ook kunnen velden hernoemd of vervangen worden door andere velden. Dit maakt het moeilijk, zoniet onmogelijk om op efficiënte wijze eenduidige data te bevragen over verschillende observatiebladen. Observaties worden ook vaak als vrije tekst opgeslagen. Dit heeft als gevolg dat observaties, zoals bv. het BMI van de patiënt, niet gemakkelijk kunnen bevraagd worden. 5.3. ETL 5.3.1. Performance De UZ-ETL extraheert alle benodigde data uit de UZ databronnen. Het grote volume aan data zorgt voor enkele praktische problemen. Zo is onder andere het volume aan laboresultaten zo groot dat het herstructureren van deze data in een traditionele databank vastloopt. De server is van onvoldoende geheugen voorzien om aan de vraag te beantwoorden. Om dit probleem te omzeilen kan men de volgende aanpakken gebruiken: 1. De data bevraging opdelen in kleinere handelbare porties. 2. Big data technologie gebruiken om deze bevraging te doen. 3. Een geoptimaliseerd programma schrijven om de data te verwerken. 4. Meer geheugen voorzien. 5.3.1.1. DE DATA BEVRAGING OPDELEN IN KLEINERE HANDELBARE PORTIES Door de hoeveelheid data die bevraagd wordt te beperken kunnen we nog steeds de traditionele bevragingen gebruiken. Zo kan de data per jaar bevraagd worden waardoor het datavolume beperkt blijft. Dit heeft als voordeel dat gestandaardiseerde technologie(SQL) gebruikt kan worden. Zo is de leercurve voor een nieuwe ontwikkelaar klein. In deze technologie is de hoeveelheid code klein en is de kans op fouten minimaal. Deze aanpak kost weinig tijd. Het nadeel is dat per jaar een nieuwe bevraging dient opgesteld te worden. In de gebruikte technologie vereist dit jaarlijks een manuele interventie door een ontwikkelaar. 5.3.1.2. BIG DATA TECHNOLOGIE GEBRUIKEN OM DEZE BEVRAGING TE DOEN. Om dit big data probleem op te lossen lijkt het aangewezen om big data technologie te gebruiken. Er werd gekozen om Hadoop Hive te evalueren. Apache Hive is een datawarehouse dat het lezen, schrijven en het beheer van grote datasets die gedistribueerd opgeslagen zijn vergemakkelijkt. Dit laat toe om te schalen door meer hardware beschikbaar te stellen waarop de bevragingen in parallel afgehandeld kunnen worden door meerdere machines te gebruiken. Hadoop Hive is moeilijk om op te zetten, te configureren en te beheren. Een schaalbaar datawarehouse is een grote investering en het capteren, ondervragen en inzichten distilleren vraagt zeer specifieke kennis van Hadoop Hive met een steile leercurve. In het experiment dat opgezet werd viel op dat deze software fragiel is en een oplossing die de standaardoplossing overstijgt niet vanzelfsprekend is. Het grote voordeel is de schaalbaarheid van de onderliggende software architectuur. De idee is dat men met Hadoop Hive de snelheid kan verhogen door hardware bij te plaatsen. 5.3.1.3. EEN GEOPTIMALISEERD PROGRAMMA SCHRIJVEN OM DE DATA TE VERWERKEN. Men kan ook geoptimaliseerd software schrijven om dit specifiek probleem op te lossen. Er werd een programma geschreven in Java die de ruwe data omzet naar het gevraagde formaat. Deze aanpak verwerkt de data in enkele minuten ipv. enkele uren. Hierbij werd een sort-merge join gebruikt. https://en.wikipedia.org/wiki/Sort-merge_join Het nadeel is dat het gaat om een ontwikkeling op maat. Meer code betekent vaak ook meer fouten. 6. VALIDATIE Bij het valideren van de Insite toepassing kan men de volgende aspecten beschouwen: - De correctheid van de technologie: de correctheid van de databronnen en hoe correct de verschillende toepassingen data communiceren met elkaar. - Tegengaan van misbruik van de data: de oplossing biedt de nodige faciliteiten aan om misbruik te detecteren of tegen te gaan. - de bruikbaarheid van de totaal oplossing: hoe correct kunnen inclusie/exclusie criteria de vereisten van een protocol uitdrukken. Werkt het geheel correct? 6.1. TECHNISCHE VALIDATIE Om de correctheid van de technologie te evalueren dienen we te beschouwen: 1. Is de data in de databronnen correct? 2. Is de data in de databron correct geïnterpreteerd? 3. Is de data op correcte wijze geëxtraheerd en verwerkt de InSite applicatie deze data correct? 6.1.1 Bevat de databron correcte data? De technologie kan niet correct werken als de databron niet correct is. Dat de data correct opgeslagen wordt is gevalideerd door de dienst zelf. Dit kan enkel gevalideerd worden door experts van de toepassing. Er dient echter vermeld te worden dat we gebruik maken van test databronnen die een replica zijn van de productie databronnen. Deze data wordt periodiek gekopieerd en kan daardoor meerdere maanden oud zijn en de meest recente data zal ontbreken. 6.1.2 Wordt de databron correct geïnterpreteerd? Hoewel in de databronnen meestal de betekenis van de attributen duidelijk is komt het soms voor dat de exacte betekenis afwijkt van wat verwacht wordt in de InSite applicatie. Daartoe hebben werd voor elk veld de definitie opgezocht en vastgelegd in 4.Bespreking databronnen. Hiertoe werd de betekenis van elk veld afgestemd met de ontwikkelaars van de databanken. 6.1.3 Verwerkt de toepassing de data correct Om te verifiëren dat de data correct verwerkt is werden de volgende testen uitgevoerd: 1. Er werd per categorie (labo/medicatie/diagnose/procedure) een bevraging opgesteld en nagegaan of het aantal patiënten overeenkomt met de oorspronkelijke databron. 2. Er werd een ingewikkeld verzameling aan criteria opgesteld die een tot een beperkte set aan patiënten resulteert. Het resultaat werd nagegaan. Er valt op dat de brondata soms fouten of uitzonderingen bevat. Het gaat hier telkens slechts over een beperkte set van data. Hoewel er kleine inaccuraatheden in het EPD te vinden zijn hebben deze nooit een zodanige impact dat de data onbruikbaar wordt. Voor meer informatie over deze validatie en de resultaten kan u zich richten tot de appendix “technologische validatie”. 6.2. UITGAANDE RESULTATEN 6.2.1 Voorkomen misbruik gegevens Tot op heden worden de patiënt feasibility vragen in samenwerking met de PIs uitgevoerd. Dit opzoekingswerk wordt manueel uitgevoerd. Betwijfelbare opvragingen of poging tot het dataminen van de gegevens in het UZGent vallen dan al snel op. De PIs kunnen ook bevragingen bijsturen en interpreteren. Door het beschikbaar stellen van de feasibility tool aan de EFPIA partners is er potentieel misbruik mogelijk ook al zijn er enkel anonieme gegevens beschikbaar. Er werd gesuggereerd om elke bevraging te blokkeren en enkel resultaten door te geven als een UZGent verantwoordelijke de bevraging goedkeurt. Deze aanpak vertraagt echter het proces zodanig dat de technologie nutteloos wordt. In InSite kan de gebruiker iteratief zijn zoektocht verbeteren naarmate het inzicht verrijkt. Mocht echter een aanvraag nodig zijn per verzoek zou elke iteratie lang duren. Ook organisatorisch is er een probleem: Wie zal de aangewezen expert zijn om deze verzoeken goed te keuren? En heeft deze expert voldoende tijd om efficiënt deze vragen goed te keuren? Er is daarom verkozen om een systeem te gebruiken waarin men dankzij een audit trail kan achterhalen welke bevragingen gedaan zijn en deze gemakkelijk gecontroleerd kunnen worden door de veiligheidsadviseur van het UZGent, met name Dr. Nadia Den Blauwen. Zij kreeg toegang tot deze gegevens en kan deze ten alle tijde controleren. Een extra beveiligingsmaatregel die geïntroduceerd werd, op aanvraag van het UZGent, is dat het aantal patiënten voor EFPIA partners altijd geaggregeerd wordt weergegeven per regio. Hierbij worden gegevens gecombineerd per land. De EFPIA partners kunnen niet het exacte aantal patiënten zien per academisch centrum. 6.2.2 CORRECTHEID VAN DE UITGAANDE DATA Bij een protocol kan men aan de hand van inclusie en exclusie criteria de relevante patiënten onderverdelen in de volgende verzamelingen: De formele patiënten populatie omvat patiënten die in aanmerking komen door enkel de formeel opgestelde criteria te hanteren. Subjectieve criteria of vage criteria zoals het typische ‘no major surgery’ kunnen hier niet in omvat worden. De geschikte patiënten populatie zoals door de expert beschouwd. Vaak zijn er subjectieve criteria die enkel door een expert geëvalueerd kunnen worden. De geïncludeerde patiënten populatie is de deelverzameling aan patiënten die uiteindelijk opgenomen zijn in de studie. Hierbij zijn er nog andere criteria bv. De instemming van de patiënt om mee te doen aan de studie. In de protocol feasibility tool wordt de formele patiënten populatie automatisch berekend. De populatie die bekomen wordt noemen we de berekende formele patiënten populatie. De patiënten populatie zoals gevonden door de PI noemen we de gescreende patiënten populatie. Bij de berekende patiënten populatie kunnen er zich verschillende fouten voordoen. Er kunnen false positives voorkomen of false negatives. Patiënt gevonden Patiënt niet gevonden True positive False negative Relevant tot protocol False positive True negative Niet relevant tot protocol False positive is de verzameling van patiënten die voorgesteld worden door de tool maar niet in aanmerking komen. False negative is de verzameling van patiënten die niet worden voorgesteld door de tool maar wel in aanmerking komen. De geschikte patiënten populatie en geïncludeerde patiënten populatie kunnen niet automatisch berekend worden omdat er een menselijke factor in meespeelt of data gebruikt wordt die niet beschikbaar is in het EPD. De validatie oefening kan op verschillende manieren uitgevoerd worden: - Het vergelijken van het aantal patiënten in de berekende formele patiënten populatie vs. de gescreende patiënten populatie . - Bepaling accuraatheid door identificeren van de patiënten in de patiënten populatie. VERGELIJKING BEREKENDE POPULATIE EN GESCREENDE POPULATIE Er werden 2 protocollen ingegeven in de protocol feasiblity tool in samenwerking met Custodix. Er waren geen patiënt identificerende gegevens beschikbaar, enkel het aantallen patiënten werd gedeeld met de PI. De cijfers strookten met het verwachte resultaat maar het vergelijken van aantallen zegt zeer weinig over de kwaliteit van de berekening. Een correcte inschatting kan ook louter toeval zijn. Alsook kan bij een verkeerd cijfer niet achterhaald worden wat de oorzaak is van het te hoge of lage cijfer. BEPALING ACCURAATHEID DOOR IDENTIFICEREN VAN DE PATIËNTEN IN DE PATIËNTEN POPULATIE Men kan de gevonden patiënten in de formele patiënten populatie vergelijken met de gevonden patiënten in de berekende formele patiënten populatie. Zo kan bepaald worden wat de false positives en de false negatives zijn. De piloot beschikt over data die minstens 6 maanden oud is. Om de berekende formele patiënten populatie te vergelijken met de formele patiënten populatie dient men een periode uit het verleden in acht te nemen. Om de false positives en false negatives te berekenen kan men starten van de berekende formele patiënten populatie en per patiënt evalueren of die terecht geïncludeerd of geëxcludeerd is. VALIDATIE OEFENING PIONEER STUDIE In het kader van de ‘Champion programme’ organiseerden de EFPIA partners (zie 3.2.4. EHR4CR Champion Programme) een algemene validatie oefening. Zo kunnen de EFPIA partners in samenwerking met de academische centra inzicht verkrijgen over de kwaliteit van de data. Hierbij werd de volgende werkwijze gebruikt: - De EFPIA partner deelt het afgesloten protocol met Custodix - Custodix bespreekt bijkomende vragen omtrent het protocol met de PI. - Custodix formaliseert de inclusie/exclusie criteria in een ‘workset’(een bestand om gemakkelijk criteria in te laden) en geeft dit door aan de PI/UZGent validator. - De PI/UZGent validator laadt deze workset in en voert de bevraging uit op de lokale recruitment omgeving. - De verkregen resultaten worden met de PI gedeeld. (en enkel met de PI) Custodix noch de EFPIA partner krijgt de patiënten te zien. - De PI evalueert de resultaten. De patiënten worden onderverdeeld in - false positives - false negatives - true positives - Nieuw ontdekte patiënten: Patiënten die eerder niet in aanmerking kwamen maar dankzij de tool ontdekt werden en als correct erkend zijn door de PI . Deze oefening werd gedaan in samenwerking met dr. Sofie Gevaert in het kader van de PIONEER studie. Er werd ontdekt dat bij het ingeven van de inclusie/exclusie criteria er fouten ingeslopen zijn. Om dit te verhelpen werden de inclusie/exclusie criteria meerdere keren aangepast en werden de resultaten opnieuw geëvalueerd. versie # false negatives false positives true positives nieuwe patiënten (reeds in true positives) 1 16 20 27 4 2 11 4 32 0 3 2 4 41 8 Bij de eerste twee versies ontbraken een tijdscriterium voor de inclusie criteria. Hierdoor kwamen heel wat verkeerde patiënten in aanmerking. In het 3e experiment bleven er enkele false positives over. Deze resterende fouten bleken veroorzaakt door inaccuraatheden in de databronnen. CONCLUSIE dr. Gevaert gaf de volgende feedback: - Deze tool is als recruitment tool op dit moment weinig nuttig, de inclusie dient vaak snel te gebeuren en in het huidige clinical data warehouse is de data tot 6 maand oud is. (zie 5.6 Procedures/diagnoses Data tekortkomingen) - Voor een recruitment tool dient tevens nog bepaald te worden hoe men omgaat met de privacy van de patiëntengegevens. - Bij doorverwijzingen vanuit andere ziekenhuizen hanteert men de afspraak dat men deze patiënten niet zal opnemen in studies in het UZGent. Deze informatie is niet beschikbaar in het clinical data warehouse en dergelijke patiënten worden er niet uitgefilterd. Alsook werden de volgende zaken ontdekt: - Er bleek dat inclusie/exclusie criteria definiëren alles behalve evident is. Zeker als hier tijdscriteria aan te pas komen. De pharmaceutische bedrijven krijgt enkel een cijfer. De vraag is dan hoe ze nagaan of dit nummer correct is en er bijvoorbeeld geen fout ingeslopen is bij het ingeven. - Het werd ook duidelijk dat een goede kennis van de standaarden(ICD10, ATC, LOINC,…) nodig is om de inclusie/exclusie criteria accuraat te kunnen ingeven. De hoeveelheid clinici die ICD10 goed kennen is beperkt. (terecht ook, ICD10 wordt voornamelijk gebruikt in een eerder administratieve context.) ANDERE VALIDATIES In het kader van deze validatie werden heel wat PIs aangesproken. Al snel bleek dat de validatie oefening voor velen weinig nuttig was omdat ze voornamelijk studies deden met ambulante patiënten. Jammer genoeg ontbreekt gestructureerde data omtrent diagnoses en procedures voor ambulante patiënten. Hierdoor was voor dergelijke studies een validatie onnuttig. Voor sommige validaties werd een initieel gesprek gestart maar werd nooit feedback van de PI ontvangen. Vermoedelijk komt dit omdat het valideren van een dergelijke oplossing veel energie en tijd kost. 7. CONCLUSIE Uit deze piloot bleek dat de data, voornamelijk data over ambulante patiënten, in eigen databronnen wordt opgeslagen of dat de data ongestructureerd wordt opgeslagen in het EPD. Hierdoor kan deze data niet accuraat gebruikt worden door computer systemen. Voor protocol feasibility in het kader van gehospitaliseerde patiënten, waarvoor de data in gestructureerde manier bijgehouden wordt, werkt de software prima. De software is echter nog niet perfect maar er wordt nog steeds aan gewerkt in samenwerking met de andere partners. De recruitment tool, dewelke gratis is door het toetreden in het Champion Programme is beperkt nuttig. Niet omdat de software gebrekkig is maar omdat de diagnose/procedure databronnen enkele maanden achterlopen op het heden en voor recruitment het vaak nodig is om recente data beschikbaar te hebben. Uit de oefening blijkt dat om een gedegen computer aided protocol feasibility of recruitment te kunnen doen de databronnen in het UZGent goed gestructureerd zullen moeten zijn. Op heden is dit jammer genoeg nog niet zo. Er zijn heel wat data silos die vaak ook nog gebruik maken van tekstvelden. Zonder een sterk beleid waarin gestructureerde data opgelegd of data silos worden tegengegaan zal semantische interoperabiliteit moeilijk, zoniet onmogelijk blijven. Elke data analyse over meerdere databronnen zal heel veel manueel werk vergen. In deze piloot participeert UZGent eveneens in het ‘EHR4CR Champion Programme’. Het participeren aan dit netwerk kan de relatie versterken tussen het UZGent en de farmaceutische bedrijven. Toetreden tot het netwerk maakt samenwerken makkelijker en verhoogt de kans dat UZ Gent als site wordt gekozen.
