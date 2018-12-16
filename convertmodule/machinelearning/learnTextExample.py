@@ -2,8 +2,6 @@ import tensorflow as tf
 from tensorflow import keras
 import matplotlib.pyplot as plt
 
-import numpy as np
-
 def loadMyData(MyDataFile, TheirDataFile):
     allData = []
     allLabels = []
@@ -95,11 +93,12 @@ model.compile(optimizer=tf.train.AdamOptimizer(),
               loss='binary_crossentropy',
               metrics=['accuracy'])
 
-x_val = train_data[:100]
-partial_x_train = train_data[100:]
+validationCutoff = int(2*len(train_data)/10)
+x_val = train_data[:validationCutoff]
+partial_x_train = train_data[validationCutoff:]
 
-y_val = train_labels[:100]
-partial_y_train = train_labels[100:]
+y_val = train_labels[:validationCutoff]
+partial_y_train = train_labels[validationCutoff:]
 
 history = model.fit(partial_x_train,
                     partial_y_train,
