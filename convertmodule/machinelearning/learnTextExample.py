@@ -2,7 +2,7 @@ import tensorflow as tf
 from tensorflow import keras
 import matplotlib.pyplot as plt
 
-def loadMyData(MyDataFile, TheirDataFile):
+def loadMyData(MyDataFile, TheirDataFiles):
     allData = []
     allLabels = []
     with open(MyDataFile, "r") as myDataFile:
@@ -12,12 +12,13 @@ def loadMyData(MyDataFile, TheirDataFile):
             allData.append(keysAsInt)
             allLabels.extend([1]*len(keysAsInt))
 
-    with open(TheirDataFile, "r") as theirDataFile:
-        values = theirDataFile.read().splitlines(keepends=False)
-        for key in values:
-            keysAsInt = list(map(int, key.split(",")))
-            allData.append(keysAsInt)
-            allLabels.extend([0]*len(keysAsInt))
+    for TheirDataFile in TheirDataFiles:
+        with open(TheirDataFile, "r") as theirDataFile:
+            values = theirDataFile.read().splitlines(keepends=False)
+            for key in values:
+                keysAsInt = list(map(int, key.split(",")))
+                allData.append(keysAsInt)
+                allLabels.extend([0]*len(keysAsInt))
 
     middleGround = int(len(allData) / 10)
     trainingData = []
@@ -47,7 +48,10 @@ def get_word_index(DictFile):
 print(tf.__version__)
 
 
-(train_data, train_labels), (test_data, test_labels) = loadMyData("C:\\Users\\Lieven\\Documents\\GitHub\\modulemagic\\data\\thesisindex.txt", "C:\\Users\\Lieven\\Documents\\GitHub\\modulemagic\\data\\bijbelindex.txt")
+(train_data, train_labels), (test_data, test_labels) = loadMyData("C:\\Users\\Lieven\\Documents\\GitHub\\modulemagic\\data\\thesisindex.txt",
+                                                                  ["C:\\Users\\Lieven\\Documents\\GitHub\\modulemagic\\data\\bijbelindex.txt",
+                                                                   "C:\\Users\\Lieven\\Documents\\GitHub\\modulemagic\\data\\kruimetjeindex.txt",
+                                                                   "C:\\Users\\Lieven\\Documents\\GitHub\\modulemagic\\data\\oorlogsfilosofieindex.txt"])
 print("Training entries: {}, labels: {}".format(len(train_data), len(train_labels)))
 print(train_data[0])
 len(train_data[0]), len(train_data[1])
