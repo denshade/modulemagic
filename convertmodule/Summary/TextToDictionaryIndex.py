@@ -24,7 +24,7 @@ def createCountFile(TextFile, DictFile, IndexFile):
     numbers = []
     with open(IndexFile, 'w', encoding="utf8") as indexfile:
         with open(TextFile, 'r', encoding="utf8") as textfile:
-            textline = re.split('\W+',textfile.read().lower())
+            textline = re.split('\W+', textfile.read().lower())
             for tokval in textline:
                 if tokval not in dictionary:
                     dictionary.append(tokval)
