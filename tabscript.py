@@ -2,6 +2,8 @@ import sys
 import csv
 import os
 from subprocess import call
+from shutil import copyfile
+
 
 
 class resource:
@@ -10,15 +12,32 @@ class resource:
 
 class FileResource(resource):
     def exec(self, other_resource: resource):
-        if type(other_resource) == FileResource.__class__:
-            pass
+        if type(other_resource) == FileResource:
+            print("Copied file from " + self.filename, other_resource.filename)
+            copyfile(self.filename, other_resource.filename)
+        if type(other_resource) == TProcessResource:
+            print("Watch out, trying to call a regular file with a table proc!")
+            if other_resource.filename.endswith(".py"):
+                call(["python", other_resource.filename, self.filename])
+            else:
+                call([other_resource.filename, self.filename])
+        if type(other_resource) == ProcessResource:
+            print("Calling " + other_resource.filename + " " + self.filename)
+            if other_resource.filename.endswith(".py"):
+                call(["python", other_resource.filename, self.filename])
+            else:
+                call([other_resource.filename, self.filename])
+
 
 
 class TableResource(resource):
     def exec(self, other_resource: resource):
         if type(other_resource) == TProcessResource:
             print("Calling " + other_resource.filename, self.filename)
-            call([other_resource.filename, self.filename])
+            if other_resource.filename.endswith(".py"):
+                call(["python", other_resource.filename, self.filename])
+            else:
+                call([other_resource.filename, self.filename])
 
 
 class ProcessResource(resource):
