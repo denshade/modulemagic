@@ -16,7 +16,7 @@ len(train_data[0]), len(train_data[1])
 word_index = imdb.get_word_index()
 
 # The first indices are reserved
-word_index = {k:(v+3) for k,v in word_index.items()}
+word_index = {k: (v + 3) for k, v in word_index.items()}
 word_index["<PAD>"] = 0
 word_index["<START>"] = 1
 word_index["<UNK>"] = 2  # unknown
@@ -24,8 +24,10 @@ word_index["<UNUSED>"] = 3
 
 reverse_word_index = dict([(value, key) for (key, value) in word_index.items()])
 
+
 def decode_review(text):
     return ' '.join([reverse_word_index.get(i, '?') for i in text])
+
 
 decode_review(train_data[0])
 
@@ -69,7 +71,6 @@ results = model.evaluate(test_data, test_labels)
 
 print(results)
 
-
 acc = history.history['acc']
 val_acc = history.history['val_acc']
 loss = history.history['loss']
@@ -91,7 +92,7 @@ plt.show()
 history_dict = history.history
 history_dict.keys()
 
-plt.clf()   # clear figure
+plt.clf()  # clear figure
 acc_values = history_dict['acc']
 val_acc_values = history_dict['val_acc']
 
