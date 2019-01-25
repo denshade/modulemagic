@@ -1,2 +1,2 @@
-FROM table://C:\Users\lieven\IdeaProjects\learchy\modulemagic\data\emails.csv TO tproc://C:\Users\lieven\IdeaProjects\learchy\modulemagic\convertmodule\FileFormatConverter\RecipeEmlFile.py
-FROM file://C:\Users\lieven\IdeaProjects\learchy\modulemagic\data\emails.csv TO proc://explorer.exe
+FROM table://C:\Users\lieven\IdeaProjects\learchy\modulemagic\data\vaatwas.csv TO tproc://C:\Users\lieven\IdeaProjects\learchy\modulemagic\convertmodule\FileFormatConverter\RecipeEmlFile.py
+FROM file://C:\Users\lieven\IdeaProjects\learchy\modulemagic\data\ TO proc://explorer.exe

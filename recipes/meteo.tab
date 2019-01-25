@@ -1,3 +1,3 @@
 FROM table://C:\Users\lieven\IdeaProjects\learchy\modulemagic\data\openmeteologin.csv TO tproc://C:\Users\lieven\IdeaProjects\learchy\modulemagic\sourcemodule\CurlRequest.py
 FROM table://C:\Users\lieven\IdeaProjects\learchy\modulemagic\data\openmeteoconvertmatrix.csv TO tproc://C:\Users\lieven\IdeaProjects\learchy\modulemagic\convertmodule\OpenWeatherapiMatrix.py
-FROM file://C:\Users\lieven\IdeaProjects\learchy\modulemagic\data\out.csv TO proc://explorer
+FROM table://C:\Users\lieven\IdeaProjects\learchy\modulemagic\data\out.csv TO tproc://C:\Users\lieven\IdeaProjects\learchy\modulemagic\convertmodule\Graphs\LineGraph.py

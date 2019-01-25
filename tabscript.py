@@ -5,9 +5,17 @@ import subprocess
 from shutil import copyfile
 
 
+def run_in_python_depends(dest_resource, row):
+    if dest_resource.filename.endswith(".py"):
+        output = subprocess.check_output(["python", dest_resource.filename, row_to_param(row)])
+    else:
+        output = subprocess.check_output([dest_resource.filename, row_to_param(row)])
+    writeoutput(output)
+
+
 def writeoutput(output : str):
     f = open("current.csv", 'w')
-    f.write(output)
+    f.write(output.decode("utf-8"))
     f.close()
 
 
@@ -19,9 +27,9 @@ class resource:
 def proc(myresource : resource, other_resource : resource):
     print("Calling " + other_resource.filename, myresource.filename)
     if other_resource.filename.endswith(".py"):
-        output = subprocess.checkoutput(["python", other_resource.filename, myresource.filename])
+        output = subprocess.check_output(["python", other_resource.filename, myresource.filename])
     else:
-        output = subprocess.checkoutput([other_resource.filename, myresource.filename])
+        output = subprocess.check_output([other_resource.filename, myresource.filename])
     writeoutput(output)
 
 
@@ -33,9 +41,9 @@ class FileResource(resource):
         if type(dest_resource) == TProcessResource:
             print("Watch out, trying to call a regular file with a table proc!")
             if dest_resource.filename.endswith(".py"):
-                subprocess.checkoutput(["python", dest_resource.filename, self.filename])
+                subprocess.check_output(["python", dest_resource.filename, self.filename])
             else:
-                subprocess.checkoutput([dest_resource.filename, self.filename])
+                subprocess.check_output([dest_resource.filename, self.filename])
         if type(dest_resource) == ProcessResource:
             proc(self, dest_resource)
 
@@ -58,11 +66,8 @@ class TableResource(resource):
             reader = csv.DictReader(self.filename)
             for row in reader:
                 print("Calling " + dest_resource.filename + row_to_param(row))
-                if dest_resource.filename.endswith(".py"):
-                    output = subprocess.checkoutput(["python", dest_resource.filename, row_to_param(row)])
-                else:
-                    output = subprocess.checkoutput([dest_resource.filename, row_to_param(row)])
-                writeoutput(output)
+                run_in_python_depends(dest_resource, row)
+
 
 
 class ProcessResource(resource):
@@ -75,15 +80,15 @@ class ProcessResource(resource):
         if type(dest_resource) == TProcessResource:
             print("Watch out, trying to call a regular file with a table proc!")
             if dest_resource.filename.endswith(".py"):
-                subprocess.checkoutput(["python", dest_resource.filename, sourcefile])
+                subprocess.check_output(["python", dest_resource.filename, sourcefile])
             else:
-                subprocess.checkoutput([dest_resource.filename, sourcefile])
+                subprocess.check_output([dest_resource.filename, sourcefile])
         if type(dest_resource) == ProcessResource:
             print("Calling " + dest_resource.filename + sourcefile)
             if dest_resource.filename.endswith(".py"):
-                output = subprocess.checkoutput(["python", dest_resource.filename, sourcefile])
+                output = subprocess.check_output(["python", dest_resource.filename, sourcefile])
             else:
-                output = subprocess.checkoutput([dest_resource.filename, sourcefile])
+                output = subprocess.check_output([dest_resource.filename, sourcefile])
             writeoutput(output)
 
 
@@ -97,15 +102,15 @@ class TProcessResource(resource):
             copyfile(self.sourcefile, dest_resource.filename)
         if type(dest_resource) == TProcessResource:
             if dest_resource.filename.endswith(".py"):
-                subprocess.checkoutput(["python", dest_resource.filename, sourcefile])
+                subprocess.check_output(["python", dest_resource.filename, sourcefile])
             else:
-                subprocess.checkoutput([dest_resource.filename, sourcefile])
+                subprocess.check_output([dest_resource.filename, sourcefile])
         if type(dest_resource) == ProcessResource:
             print("Calling " + dest_resource.filename + sourcefile)
             if dest_resource.filename.endswith(".py"):
-                output = subprocess.checkoutput(["python", dest_resource.filename, sourcefile])
+                output = subprocess.check_output(["python", dest_resource.filename, sourcefile])
             else:
-                output = subprocess.checkoutput([dest_resource.filename, sourcefile])
+                output = subprocess.check_output([dest_resource.filename, sourcefile])
             writeoutput(output)
 
 
@@ -181,6 +186,9 @@ if len(sys.argv) != 2:
       """)
     sys.exit(2)
 inputFile = sys.argv[1]
+if not os.path.exists(inputFile):
+    sys.stderr.write("Couldn't find file " + inputFile)
+    sys.exit(4)
 working_dir = os.path.dirname(os.path.realpath(__file__))
 with open(inputFile, 'r') as recipefile:
     for line in recipefile.readlines():

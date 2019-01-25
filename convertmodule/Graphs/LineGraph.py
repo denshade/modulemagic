@@ -22,15 +22,16 @@ my_xticks = []
 with open(input_file) as f:
     lines = f.readlines()
     for line in lines[1:]:
-        tick += 1
         y_array.append(float(line.split(",")[1]))
-        my_xticks.append(line.split(",")[0])
+        if tick % ((len(lines) - 1) / 4) == 0:
+            my_xticks.append(line.split(",")[0])
+        tick += 1
 
 
 
 x = np.array(range(1, len(lines)))
 y = np.array(y_array)
-plt.xticks(x, my_xticks, rotation='vertical')
+plt.xticks(x, my_xticks)
 plt.locator_params(nbins=4)
 plt.plot(x, y)
 plt.show()
