@@ -6,12 +6,28 @@ from shutil import copyfile
 
 
 def run_in_python_depends(dest_resource, row):
-    if dest_resource.filename.endswith(".py"):
-        output = subprocess.check_output(["python", dest_resource.filename, row_to_param(row)])
-    else:
-        output = subprocess.check_output([dest_resource.filename, row_to_param(row)])
-    writeoutput(output)
-
+    try:
+        if dest_resource.filename.endswith(".py"):
+            process = dest_resource.filename
+            prepended = os.path.join(os.path.dirname(os.path.realpath(__file__)), process)
+            if not os.path.isfile(process) and os.path.isfile(prepended): #file may be relative. Try prepend path.
+                process = prepended
+            if row is not None:
+                output = subprocess.check_output(["python", process, row_to_param(row)])
+            else:
+                output = subprocess.check_output(["python", process])
+        else:
+            if row is not None:
+                output = subprocess.check_output([dest_resource.filename, row_to_param(row)])
+            else:
+                output = subprocess.check_output([dest_resource.filename])
+        writeoutput(output)
+    except subprocess.CalledProcessError as e:
+        print("The process failed with: " )
+        if e.stderr is not None:
+            print(e.stderr)
+        if e.stdout is not None:
+            print(e.stdout)
 
 def writeoutput(output : str):
     f = open("current.csv", 'w')
@@ -26,10 +42,11 @@ class resource:
 
 def proc(myresource : resource, other_resource : resource):
     print("Calling " + other_resource.filename, myresource.filename)
+    prepended = os.path.join(os.path.dirname(os.path.realpath(__file__)), other_resource.filename)
     if other_resource.filename.endswith(".py"):
-        output = subprocess.check_output(["python", other_resource.filename, myresource.filename])
+        output = subprocess.check_output(["python", prepended, myresource.filename])
     else:
-        output = subprocess.check_output([other_resource.filename, myresource.filename])
+        output = subprocess.check_output([prepended, myresource.filename])
     writeoutput(output)
 
 
@@ -49,10 +66,11 @@ class FileResource(resource):
 
 
 def row_to_param(row):
-    str = ""
-    for key in row:
-        str += "--"+key+"="+row[key]
-    return str
+    if row is not None:
+        str = ""
+        for key in row:
+            str += "--"+key+"="+row[key]
+        return str
 
 
 class TableResource(resource):

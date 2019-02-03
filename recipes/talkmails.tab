@@ -1,0 +1,1 @@
+FROM file://C:\Users\Lieven\Documents\GitHub\modulemagic\data\talk.csv TO proc://C:\Users\Lieven\Documents\GitHub\modulemagic\destinationmodule\speech.py
